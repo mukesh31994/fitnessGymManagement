@@ -80,7 +80,7 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
     },
 //Ajax form submition
     submitHandler: function (form) {
-        saveCustomerDetails();
+        saveMember();
     },
 // Do not change code below
     errorPlacement: function (error, element) {
@@ -90,7 +90,7 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
 
 /*      End of Code Validation       */
 
-function saveCustomerDetails() {
+function saveMember() {
 
     if ($customerUpdateForm.valid()) {
 	debugger;
@@ -113,35 +113,4 @@ function saveCustomerDetails() {
     }
 }
 
-function getUserDetails()
-{debugger;
-    var url1 = "http://localhost:8080/getUserDetail";
-    var lAjax1 = new FormAjax();
-    lAjax1.setUrl(url1);
-    lAjax1.setSync(true);
-    lAjax1.setData({"emailAddress":"devdh@gmail.com"})
-    lAjax1.addEventListener('success', function (response) {debugger;
-        var json = JSON.parse(response);
-        var data = JSON.parse(json.data);
-        sessionStorage.setItem("USER", json.user);
-        var lUser = JSON.parse(json.user);
-        var menuDom = document.getElementById("menu");
-//            if (menuDom.id == 'menu') {
-        var menu = new Menu();
-        menu.setDom(menuDom);
-        menu.setData(data);
-        menu.render();
-        initApp.leftNav();
-//            }
-        document.getElementById("UserName").innerHTML = lUser.emailAddress;
 
-//        _callback();
-     /*   getStoreListByUserId();*/
-
-    });
-    lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
-        console.log(textStatus + " ; " + errorThrown);
-    });
-    lAjax1.execute();
-//        }
-}
