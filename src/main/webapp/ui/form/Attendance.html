@@ -1,0 +1,57 @@
+<div class=" padding-top-10 bg-color-white">
+	<div class="jarviswidget jarviswidget-color-darken" style="" id="wid-id-0">
+		<header>
+			<span> <i></i> </span>
+			<h2>Attendance</h2>
+		</header>
+		<form id="updateCustomerform" class="smart-form" autocomplete="off">
+
+			<fieldset>
+
+				<div class="row">
+					<section class="col col-6">
+						<label class="label">Select Member</label>
+						<label class="select">
+							<select name="member" id="member">
+								<!--<option value="1">Monthly</option>
+								<option value="2">Yearly</option>
+								<option value="3">Quarterly</option>-->
+							</select>
+							<i></i>
+						</label>
+					</section>
+				</div>
+
+			</fieldset>
+			<footer>
+				<div class="col col-md-6">
+					<input type="button" class="btn btn-primary" id="btnSave" value="Add Attendance">
+				</div>
+			</footer>
+
+		</form>
+	</div>
+</div>
+
+<!--<script src="js/form/addMember.js" type="text/javascript"></script>-->
+<script>
+	function OnLoad() {
+
+		var url1 = "/getAllMember";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url1);
+		lAjax1.setSync(true);
+		lAjax1.setData($('form').serialize())
+		lAjax1.addEventListener('success', function (response) {
+			var dataSet = JSON.parse(response);
+			$.each(dataSet, function(i, item) {
+				$('<option>').val(item.member_id).text(item.first_name + " - " + item.email).appendTo('#member');
+			});
+
+		});
+		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
+</script>

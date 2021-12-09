@@ -15,7 +15,7 @@ var memberList = {
 					type: 'string',
 					width: '20',
 					render: function(pValue, meta, record) {debugger;
-						var reqStr = '<a  href="#ui/form/AddMember.html?id=' + record.member_id + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
+						var reqStr = '<a  href="#ui/form/UpdateMember.html?id=' + record.member_id + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 						return reqStr;
 					}
 		//			sortable: true

@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberRepository memberRepository;
-	
+
 	@Override
 	public void saveMember(Member pMember) {
 		memberRepository.save(pMember);
@@ -23,9 +23,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> findAll() {
-		// TODO Auto-generated method stub
 //		return memberRepository.findAll(Sort.by(Sort.Direction.DESC, "memberId"));
 		return memberRepository.findAll();
+	}
+
+	@Override
+	public Member findByMemberId(int pMemberId) {
+		return memberRepository.findByMemberId(pMemberId);
 	}
 
 //	@Override

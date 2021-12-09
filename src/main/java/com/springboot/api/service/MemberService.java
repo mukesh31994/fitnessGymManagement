@@ -10,6 +10,8 @@ public interface MemberService {
 	
 	public List<Member> findAll();
 	
+	public Member findByMemberId(int pMemberId);
+	
 //	 public Member findByEmailAddress(String pEmailAddress);
 	 
 }

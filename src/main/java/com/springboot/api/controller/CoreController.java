@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,6 +40,11 @@ public class CoreController {
 	@RequestMapping(value = "/getAllMember", method = RequestMethod.POST)
 	public List<Member> getAllMember() {
 		return memberService.findAll();
+	}
+
+	@RequestMapping(value = "/getByMemberId", method = RequestMethod.POST)
+	public Member getByMemberId(@RequestParam(value = "memberId") int memberId) {
+		return memberService.findByMemberId(memberId);
 	}
 
 }
