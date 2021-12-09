@@ -101,7 +101,14 @@ debugger;
     lAjax1.setData( $('form').serialize() )
     lAjax1.addEventListener('success', function (response) {debugger;
         console.log(response);
-
+		$.smallBox({
+			title: "Member",
+			content: "<i class='fa fa-clock-o'></i> <i>Member Save Successfully...</i>",
+			color: "#659265",
+			iconSmall: "fa fa-check fa-2x fadeInRight animated",
+			timeout: 4000
+		});
+		window.location.href="#ui/list/ListMember.html";
     });
     lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
         console.log(textStatus + " ; " + errorThrown);

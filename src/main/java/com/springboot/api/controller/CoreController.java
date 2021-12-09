@@ -1,13 +1,12 @@
 package com.springboot.api.controller;
 
-import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,11 +29,16 @@ public class CoreController {
 	}
 	
 	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
-	public @ResponseBody String getUser(Member lMember) {
+	public @ResponseBody String addMember(Member lMember) {
 		lMember.setJoining_date(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 		memberService.saveMember(lMember);
 
 		return "success";
+	}
+	
+	@RequestMapping(value = "/getAllMember", method = RequestMethod.POST)
+	public List<Member> getAllMember() {
+		return memberService.findAll();
 	}
 
 }

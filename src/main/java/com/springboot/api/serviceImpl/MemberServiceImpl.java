@@ -1,11 +1,14 @@
 package com.springboot.api.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.api.model.Member;
 import com.springboot.api.repository.MemberRepository;
 import com.springboot.api.service.MemberService;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -13,8 +16,16 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberRepository memberRepository;
 	
+	@Override
 	public void saveMember(Member pMember) {
 		memberRepository.save(pMember);
+	}
+
+	@Override
+	public List<Member> findAll() {
+		// TODO Auto-generated method stub
+//		return memberRepository.findAll(Sort.by(Sort.Direction.DESC, "memberId"));
+		return memberRepository.findAll();
 	}
 
 //	@Override

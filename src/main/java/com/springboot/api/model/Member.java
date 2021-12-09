@@ -17,7 +17,7 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "member_id", unique = true, nullable = false, length = 11)
-	private int member_id;
+	private int memberId;
 	
 	@Column(name = "first_name", unique = false, nullable = true, length = 45)
 	private String first_name;
@@ -59,11 +59,11 @@ public class Member {
 	private Date birthdate;
 
 	public int getMember_id() {
-		return member_id;
+		return memberId;
 	}
 
 	public void setMember_id(int member_id) {
-		this.member_id = member_id;
+		this.memberId = member_id;
 	}
 
 	public String getFirst_name() {
@@ -172,7 +172,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [member_id=" + member_id + ", first_name=" + first_name + ", last_name=" + last_name
+		return "Member [memberId=" + memberId + ", first_name=" + first_name + ", last_name=" + last_name
 				+ ", address=" + address + ", contact=" + contact + ", email=" + email + ", age=" + age + ", gender="
 				+ gender + ", joining_date=" + joining_date + ", end_of_membership_date=" + end_of_membership_date
 				+ ", membership_id=" + membership_id + ", user_id=" + user_id + ", branchId=" + branchId
