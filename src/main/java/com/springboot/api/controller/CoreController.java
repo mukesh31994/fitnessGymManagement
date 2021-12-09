@@ -27,11 +27,12 @@ public class CoreController {
 	}
 	
 	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
-	public @ResponseBody String getUser(@RequestParam("emailAddress") String pEmailAddress) {
-		System.out.println("inside getUser : " + pEmailAddress);
-		Member lMember = new Member();
-		lMember.setFirst_name(pEmailAddress);
-		lMember.setLast_name(pEmailAddress);
+	public @ResponseBody String getUser(Member lMember) {
+//		public @ResponseBody String getUser(@RequestParam("email") String pEmailAddress) {
+//		System.out.println("inside getUser : " + pEmailAddress);
+//		Member lMember = new Member();
+//		lMember.setFirst_name(pEmailAddress);
+//		lMember.setLast_name(pEmailAddress);
 		memberService.saveMember(lMember);
 //		JSONObject lJSON = new JSONObject();
 //		Gson gson = new Gson();

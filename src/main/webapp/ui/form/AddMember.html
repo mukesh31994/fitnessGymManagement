@@ -5,24 +5,21 @@
             <h2>Add Member</h2>                
         </header>
         <form id="updateCustomerform" class="smart-form" autocomplete="off">
-            <input type="hidden" class="form-control" name="beanName" id="beanName" value="CustomerMasterManager">
-            <input type="hidden" value="com.pladatechnologies.loyalty.entity.CustomerMaster" name="entityName" id="entityName" >
-            <input type="hidden" id="StoreId">
-            <input type="hidden" id="CustId">
+            
             <fieldset>					
                 <div class="row">
                     <section class="col col-6">
                         <label class="label">First Name</label>
                         <label class="input">
                             <i class="icon-append fa fa-user"></i>
-                            <input type="text" name="firstName" id="firstName"  maxlength="30">
+                            <input type="text" name="first_name" id="first_name"  maxlength="30">
                         </label>
                     </section>
                     <section class="col col-6">
                         <label class="label">Last Name</label>
                         <label class="input">
                              <i class="icon-append fa fa-user"></i>
-                            <input type="text" name="lastName" id="lastName" maxlength="30">
+                            <input type="text" name="last_name" id="last_name" maxlength="30">
                         </label>
                     </section>
                 </div>
@@ -31,14 +28,14 @@
                         <label class="label">Mobile No</label>
                         <label class="input">
                              <i class="icon-append fa fa-phone"></i>
-                            <input type="number" name="mobileNo" id="mobileNo" maxlength="10">
+                            <input type="number" name="contact" id="contact" maxlength="10">
                         </label>
                     </section>
                     <section class="col col-6">
                         <label class="label">Birth Date</label>
                         <label class="input">
                              <i class="icon-append fa fa-birthday-cake"></i>
-                            <input type="date" data-date="" data-date-format="DD MM YYYY" name="birthDate" id="birthDate">
+                            <input type="date" data-date="" data-date-format="DD MM YYYY" name="birthdate" id="birthdate">
                         </label>
                     </section>
                 </div>
@@ -83,11 +80,11 @@
                         <label class="label">Gender</label>
                         <div class="inline-group">
                             <label class="radio">
-                                <input type="radio" name="gender" value="Male" id="genderMale">
+                                <input type="radio" name="gender" value="Male" id="gender">
                                 <i></i>Male
                             </label>
                             <label class="radio">
-                                <input type="radio" name="gender" value="Female" id="genderFemale">
+                                <input type="radio" name="gender" value="Female" id="gender">
                                 <i></i>Female
                             </label>
                         </div>

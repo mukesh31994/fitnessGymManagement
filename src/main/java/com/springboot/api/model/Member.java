@@ -1,6 +1,6 @@
 package com.springboot.api.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +46,7 @@ public class Member {
 	@Column(name = "end_of_membership_date")
 	private Date end_of_membership_date;
 
-	@Column(name = "membership_id", unique = true, nullable = false, length = 11)
+	@Column(name = "membership_id", length = 11)
 	private int membership_id;
 	
 	@Column(name = "user_id", length = 11)
