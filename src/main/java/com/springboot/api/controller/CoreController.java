@@ -1,5 +1,8 @@
 package com.springboot.api.controller;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,24 +31,9 @@ public class CoreController {
 	
 	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
 	public @ResponseBody String getUser(Member lMember) {
-//		public @ResponseBody String getUser(@RequestParam("email") String pEmailAddress) {
-//		System.out.println("inside getUser : " + pEmailAddress);
-//		Member lMember = new Member();
-//		lMember.setFirst_name(pEmailAddress);
-//		lMember.setLast_name(pEmailAddress);
+		lMember.setJoining_date(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 		memberService.saveMember(lMember);
-//		JSONObject lJSON = new JSONObject();
-//		Gson gson = new Gson();
-//		try {
-//			lUser = userService.findByEmailAddress(pEmailAddress);
-//			System.out.println(lUser);
-//			String menus = userService.getUsersMenu("" + lUser.getUserId());
-//			lJSON.put("data", menus);
-//			lJSON.put("user", gson.toJson(lUser));
-//			System.out.println(lJSON);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+
 		return "success";
 	}
 
