@@ -1,5 +1,7 @@
 package com.springboot.api.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ public class AttendanceServiceImpl implements AttendanceService {
 	@Override
 	public void saveAttendance(Attendance pAttendance) {
 		attendanceRepository.save(pAttendance);
+	}
+	
+	public List<Attendance> findByMemberId(int pMemberId){
+		return attendanceRepository.findByMemberId(pMemberId);
 	}
 
 }

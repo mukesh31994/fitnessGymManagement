@@ -56,8 +56,12 @@ public class CoreController {
 	public @ResponseBody String addAttendance(Attendance lAttendance) {
 		lAttendance.setDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 		attendanceService.saveAttendance(lAttendance);
-
 		return "success";
+	}
+	
+	@RequestMapping(value = "/getAttendanceByMemberId", method = RequestMethod.POST)
+	public List<Attendance> getAttendanceByMemberId(@RequestParam(value = "memberId") int memberId) {
+		return attendanceService.findByMemberId(memberId);
 	}
 
 }
