@@ -85,7 +85,31 @@ var attendanceList = {
 	]
 };
 
+var paymentList = {
+	columns: [
+		{
+			mDataProp: 'paymentId',
+			title: 'Payment Id',
+			type: 'string',
+			width: '20'
+		},
+		{
+			mDataProp: 'amount',
+			title: 'Payment Amount',
+			type: 'number',
+			width: '20'
+		},
+		{
+			mDataProp: 'paymentTime',
+			title: 'Payment Time',
+			type: 'string',
+			width: '20'
+		}
+	]
+};
+
 var viewConfig = {
 	"memberList": memberList,
-	"attendance": attendanceList
+	"attendance": attendanceList,
+	"paymentList": paymentList
 };
