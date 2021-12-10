@@ -25,7 +25,7 @@
 			</fieldset>
 			<footer>
 				<div class="col col-md-6">
-					<input type="button" class="btn btn-primary" id="btnSave" value="Add Attendance">
+					<input type="button" class="btn btn-primary" id="btnSave" value="Add Attendance" onclick="AddAttendance();">
 				</div>
 			</footer>
 
@@ -33,20 +33,52 @@
 	</div>
 </div>
 
-<!--<script src="js/form/addMember.js" type="text/javascript"></script>-->
 <script>
 	function OnLoad() {
 
-		var url1 = "/getAllMember";
+		var url = "/getAllMember";
 		var lAjax1 = new FormAjax();
-		lAjax1.setUrl(url1);
+		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
 		lAjax1.setData($('form').serialize())
 		lAjax1.addEventListener('success', function (response) {
 			var dataSet = JSON.parse(response);
-			$.each(dataSet, function(i, item) {
+			$.each(dataSet, function (i, item) {
 				$('<option>').val(item.member_id).text(item.first_name + " - " + item.email).appendTo('#member');
 			});
+
+		});
+		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
+
+	function AddAttendance() {
+
+		var url = "/addAttendance";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url);
+		lAjax1.setSync(true);
+		lAjax1.setData({"memberId": $("#member").val(), "userId": "1"})
+		lAjax1.addEventListener('success', function (response) {
+			if (response == "success") {
+				$.smallBox({
+					title: "Attendance",
+					content: "<i class='fa fa-clock-o'></i> <i>Attendance Updated Successfully...</i>",
+					color: "#659265",
+					iconSmall: "fa fa-check fa-2x fadeInRight animated",
+					timeout: 4000
+				});
+			} else {
+				$.smallBox({
+					title: "Attendance",
+					content: "<i class='fa fa-clock-o'></i> <i>Something went wrong...</i>",
+					color: "#659265",
+					iconSmall: "fa fa-check fa-2x fadeInRight animated",
+					timeout: 4000
+				});
+			}
 
 		});
 		lAjax1.addEventListener('error', function (textStatus, errorThrown) {

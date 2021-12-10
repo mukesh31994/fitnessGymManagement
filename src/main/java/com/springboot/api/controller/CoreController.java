@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.api.model.Attendance;
 import com.springboot.api.model.Member;
+import com.springboot.api.service.AttendanceService;
 import com.springboot.api.service.MemberService;
 
 
@@ -23,6 +25,9 @@ public class CoreController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	AttendanceService attendanceService;
 	
 	@GetMapping("welcome")
 	public String getMessage() {
@@ -45,6 +50,14 @@ public class CoreController {
 	@RequestMapping(value = "/getByMemberId", method = RequestMethod.POST)
 	public Member getByMemberId(@RequestParam(value = "memberId") int memberId) {
 		return memberService.findByMemberId(memberId);
+	}
+	
+	@RequestMapping(value = "/addAttendance", method = RequestMethod.POST)
+	public @ResponseBody String addAttendance(Attendance lAttendance) {
+		lAttendance.setDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+		attendanceService.saveAttendance(lAttendance);
+
+		return "success";
 	}
 
 }
