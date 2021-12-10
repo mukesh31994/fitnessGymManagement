@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.api.model.Attendance;
 import com.springboot.api.model.Member;
+import com.springboot.api.model.Payment;
 import com.springboot.api.service.AttendanceService;
 import com.springboot.api.service.MemberService;
+import com.springboot.api.service.PaymentService;
 
 
 //import com.google.gson.Gson;
@@ -28,6 +30,9 @@ public class CoreController {
 	
 	@Autowired
 	AttendanceService attendanceService;
+
+	@Autowired
+	PaymentService paymentService;
 	
 	@GetMapping("welcome")
 	public String getMessage() {
@@ -62,6 +67,19 @@ public class CoreController {
 	@RequestMapping(value = "/getAttendanceByMemberId", method = RequestMethod.POST)
 	public List<Attendance> getAttendanceByMemberId(@RequestParam(value = "memberId") int memberId) {
 		return attendanceService.findByMemberId(memberId);
+	}
+	
+	@RequestMapping(value = "/addPayment", method = RequestMethod.POST)
+	public @ResponseBody String addPayment(Payment lPayment) {
+		lPayment.setPaymentDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+		lPayment.setPaymentTime(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+		paymentService.savePayment(lPayment);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/getPaymentByMemberId", method = RequestMethod.POST)
+	public List<Payment> getPaymentByMemberId(@RequestParam(value = "memberId") int memberId) {
+		return paymentService.findByMemberId(memberId);
 	}
 
 }

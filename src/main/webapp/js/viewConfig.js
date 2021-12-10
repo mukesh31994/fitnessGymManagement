@@ -65,13 +65,13 @@ var memberList = {
 var attendanceList = {
 	columns: [
 		{
-			mDataProp: 'attendanceId',
-			title: 'attendanceId',
+			mDataProp: 'memberId',
+			title: 'Member Id',
 			type: 'string',
 			width: '20',
 			render: function(pValue, meta, record) {
 				debugger;
-				return "muk";
+				return pValue;
 			}
 		},
 		{
