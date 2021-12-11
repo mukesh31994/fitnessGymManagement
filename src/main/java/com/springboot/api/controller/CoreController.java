@@ -18,12 +18,14 @@ import com.springboot.api.model.Attendance;
 import com.springboot.api.model.Instructor;
 import com.springboot.api.model.Member;
 import com.springboot.api.model.Payment;
+import com.springboot.api.model.User;
 import com.springboot.api.model.Workout;
 import com.springboot.api.model.WorkoutPlan;
 import com.springboot.api.service.AttendanceService;
 import com.springboot.api.service.InstructorService;
 import com.springboot.api.service.MemberService;
 import com.springboot.api.service.PaymentService;
+import com.springboot.api.service.UserService;
 import com.springboot.api.service.WorkoutPlanService;
 import com.springboot.api.service.WorkoutService;
 
@@ -50,6 +52,9 @@ public class CoreController {
 	
 	@Autowired
 	WorkoutPlanService workoutPlanService;
+	
+	@Autowired
+	UserService userPlanService;
 
 	@GetMapping("welcome")
 	public String getMessage() {
@@ -154,6 +159,15 @@ public class CoreController {
 	public WorkoutPlan getByPlanId(@RequestParam(value = "planId") int planId) {
 		return workoutPlanService.findByPlanId(planId);
 	}
+	
+	/* -----------User Controller----------- */
+	
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+	public @ResponseBody String addUser(User lUser) {
+		userPlanService.saveUser(lUser);
+		return "success";
+	}
+	
 	
 	@RequestMapping(value = "/myusername", method = RequestMethod.GET)
 	@ResponseBody

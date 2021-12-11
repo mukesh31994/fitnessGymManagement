@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "user")
@@ -35,6 +36,18 @@ public class User {
 	
 	@Column(name = "active", length = 11)
 	private boolean active = true;
+	
+	@Transient
+	@Column(name = "address", length = 50)
+	private String address;
+	
+	@Transient
+	@Column(name = "contact", length = 10)
+	private String contact;
+	
+	@Transient
+	@Column(name = "email", length = 11)
+	private String email;
 
 	public int getUserId() {
 		return userId;
@@ -90,6 +103,30 @@ public class User {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	@Override
