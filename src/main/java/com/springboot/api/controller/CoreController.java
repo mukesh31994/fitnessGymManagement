@@ -164,6 +164,7 @@ public class CoreController {
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public @ResponseBody String addUser(User lUser) {
+		lUser.setCreatedTime(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
 		userPlanService.saveUser(lUser);
 		return "success";
 	}
