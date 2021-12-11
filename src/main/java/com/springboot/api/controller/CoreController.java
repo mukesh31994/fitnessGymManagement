@@ -1,7 +1,10 @@
 package com.springboot.api.controller;
 
+import java.security.Principal;
 import java.util.Calendar;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -150,6 +153,12 @@ public class CoreController {
 	@RequestMapping(value = "/getByPlanId", method = RequestMethod.POST)
 	public WorkoutPlan getByPlanId(@RequestParam(value = "planId") int planId) {
 		return workoutPlanService.findByPlanId(planId);
+	}
+	
+	@RequestMapping(value = "/myusername", method = RequestMethod.GET)
+	@ResponseBody
+	public String getUsername(HttpServletRequest req) {
+	    return req.getUserPrincipal().getName();
 	}
 
 }
