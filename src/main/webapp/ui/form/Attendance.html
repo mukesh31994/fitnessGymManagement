@@ -13,9 +13,6 @@
 						<label class="label">Select Member</label>
 						<label class="select">
 							<select name="member" id="member">
-								<!--<option value="1">Monthly</option>
-								<option value="2">Yearly</option>
-								<option value="3">Quarterly</option>-->
 							</select>
 							<i></i>
 						</label>
@@ -62,7 +59,7 @@
 		lAjax1.addEventListener('success', function (response) {
 			var dataSet = JSON.parse(response);
 			$.each(dataSet, function (i, item) {
-				$('<option>').val(item.member_id).text(item.first_name + " - " + item.email).appendTo('#member');
+				$('<option>').val(item.memberId).text(item.firstName + " - " + item.email).appendTo('#member');
 			});
 
 		});

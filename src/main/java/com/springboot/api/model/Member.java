@@ -16,14 +16,14 @@ public class Member {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "member_id", unique = true, nullable = false, length = 11)
+	@Column(name = "memberId", unique = true, nullable = false, length = 11)
 	private int memberId;
 	
-	@Column(name = "first_name", unique = false, nullable = true, length = 45)
-	private String first_name;
+	@Column(name = "firstName", unique = false, nullable = true, length = 45)
+	private String firstName;
 
-	@Column(name = "last_name", unique = false, nullable = true, length = 45)
-	private String last_name;
+	@Column(name = "lastName", unique = false, nullable = true, length = 45)
+	private String lastName;
 	
 	@Column(name = "address", unique = false, nullable = true, length = 45)
 	private String address;
@@ -40,17 +40,17 @@ public class Member {
 	@Column(name = "gender", unique = false, nullable = true, length = 45)
 	private String gender;
 	
-	@Column(name = "joining_date")
-	private Date joining_date;
+	@Column(name = "joiningDate")
+	private Date joiningDate;
 
-	@Column(name = "end_of_membership_date")
-	private Date end_of_membership_date;
+	@Column(name = "endOfMembershipDate")
+	private Date endOfMembershipDate;
 
-	@Column(name = "membership_id", length = 11)
-	private int membership_id;
+	@Column(name = "membershipId", length = 11)
+	private int membershipId;
 	
-	@Column(name = "user_id", length = 11)
-	private int user_id;
+	@Column(name = "userId", length = 11)
+	private int userId;
 	
 	@Column(name = "branchId", length = 11)
 	private int branchId;
@@ -58,28 +58,28 @@ public class Member {
 	@Column(name = "birthdate")
 	private Date birthdate;
 
-	public int getMember_id() {
+	public int getMemberId() {
 		return memberId;
 	}
 
-	public void setMember_id(int member_id) {
-		this.memberId = member_id;
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getAddress() {
@@ -122,36 +122,36 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public Date getJoining_date() {
-		return joining_date;
+	public Date getJoiningDate() {
+		return joiningDate;
 	}
 
-	public void setJoining_date(Date joining_date) {
-		this.joining_date = joining_date;
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
 	}
 
-	public Date getEnd_of_membership_date() {
-		return end_of_membership_date;
+	public Date getEndOfMembershipDate() {
+		return endOfMembershipDate;
 	}
 
-	public void setEnd_of_membership_date(Date end_of_membership_date) {
-		this.end_of_membership_date = end_of_membership_date;
+	public void setEndOfMembershipDate(Date endOfMembershipDate) {
+		this.endOfMembershipDate = endOfMembershipDate;
 	}
 
-	public int getMembership_id() {
-		return membership_id;
+	public int getMembershipId() {
+		return membershipId;
 	}
 
-	public void setMembership_id(int membership_id) {
-		this.membership_id = membership_id;
+	public void setMembershipId(int membershipId) {
+		this.membershipId = membershipId;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getBranchId() {
@@ -172,11 +172,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [memberId=" + memberId + ", first_name=" + first_name + ", last_name=" + last_name
-				+ ", address=" + address + ", contact=" + contact + ", email=" + email + ", age=" + age + ", gender="
-				+ gender + ", joining_date=" + joining_date + ", end_of_membership_date=" + end_of_membership_date
-				+ ", membership_id=" + membership_id + ", user_id=" + user_id + ", branchId=" + branchId
-				+ ", birthdate=" + birthdate + "]";
+		return "Member [memberId=" + memberId + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
+				+ address + ", contact=" + contact + ", email=" + email + ", age=" + age + ", gender=" + gender
+				+ ", joiningDate=" + joiningDate + ", endOfMembershipDate=" + endOfMembershipDate + ", membershipId="
+				+ membershipId + ", userId=" + userId + ", branchId=" + branchId + ", birthdate=" + birthdate + "]";
 	}
-	
 }

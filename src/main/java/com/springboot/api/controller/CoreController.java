@@ -55,7 +55,7 @@ public class CoreController {
 
 	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
 	public @ResponseBody String addMember(Member lMember) {
-		lMember.setJoining_date(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+		lMember.setJoiningDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 		memberService.saveMember(lMember);
 
 		return "success";

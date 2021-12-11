@@ -2,7 +2,7 @@
 var memberList = {
 	columns: [
 		{
-			mDataProp: 'member_id',
+			mDataProp: 'memberId',
 			title: 'ID',
 			type: 'number',
 			width: '20',
@@ -10,34 +10,34 @@ var memberList = {
 
 		},
 		{
-			mDataProp: 'first_name',
-			title: 'first_name',
+			mDataProp: 'firstName',
+			title: 'First Name',
 			type: 'string',
 			width: '20',
 			render: function(pValue, meta, record) {
 				debugger;
-				var reqStr = '<a  href="#ui/form/UpdateMember.html?id=' + record.member_id + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
+				var reqStr = '<a  href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
 			}
 			//			sortable: true
 		},
 		{
-			mDataProp: 'last_name',
-			title: 'last_name',
+			mDataProp: 'lastName',
+			title: 'Last Name',
 			type: 'string',
 			width: '20',
 			//			sortable: true
 		},
 		{
 			mDataProp: 'contact',
-			title: 'contact',
+			title: 'Contact',
 			type: 'number',
 			width: '20',
 			//			sortable: true
 		},
 		{
 			mDataProp: 'email',
-			title: 'email',
+			title: 'Email',
 			type: 'string',
 			width: '20',
 			//			sortable: true,
@@ -53,7 +53,7 @@ var memberList = {
 		},
 		{
 			mDataProp: 'gender',
-			title: 'gender',
+			title: 'Gender',
 			type: 'string',
 			width: '20',
 			//			sortable: true,
