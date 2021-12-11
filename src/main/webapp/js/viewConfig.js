@@ -258,7 +258,10 @@ var paymentList = {
 			mDataProp: 'paymentTime',
 			title: 'Payment Time',
 			type: 'string',
-			width: '20'
+			width: '20',
+			render: function(data, type, row) {//data
+				return moment(row.paymentTime).format('DD/MM/YYYY hh:mm:ss');
+			}
 		}
 	]
 };
