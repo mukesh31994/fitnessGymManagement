@@ -112,9 +112,11 @@ public class CoreController {
 	/* -----------Instructor Controller----------- */
 
 	@RequestMapping(value = "/addInstructor", method = RequestMethod.POST)
-	public @ResponseBody String addMember(Instructor lInstructor) {
-		lInstructor.setUserId(1);
-		instructorService.saveInstructor(lInstructor);
+	public @ResponseBody String addInstructor(User lUser) {
+//		lInstructor.setUserId(1);
+//		instructorService.saveInstructor(lInstructor);
+		lUser.setCreatedTime(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+		userService.saveUserAsInstructor(lUser);
 		return "success";
 	}
 

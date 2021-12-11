@@ -12,6 +12,8 @@ public interface UserService {
 	
 	public User findByUserId(int pUserId);
 	
+	public void saveUserAsInstructor(User pUser);
+	
 //	 public Member findByEmailAddress(String pEmailAddress);
 	 
 }

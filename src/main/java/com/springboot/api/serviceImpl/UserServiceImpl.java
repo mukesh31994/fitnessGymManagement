@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.api.model.Admin;
+import com.springboot.api.model.Instructor;
 import com.springboot.api.model.User;
 import com.springboot.api.repository.AdminRepository;
+import com.springboot.api.repository.InstructorRepository;
 import com.springboot.api.repository.UserRepository;
 import com.springboot.api.service.UserService;
 
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	AdminRepository adminRepository;
+	
+	@Autowired
+	InstructorRepository instructorRepository;
 
 	@Override
 	public void saveUser(User pUser) {
@@ -30,6 +35,18 @@ public class UserServiceImpl implements UserService {
 		lAdmin.setEmail(lUser.getEmail());
 		lAdmin.setContact(lUser.getContact());
 		adminRepository.save(lAdmin);
+	}
+	
+	@Override
+	public void saveUserAsInstructor(User pUser) {
+		User lUser = userRepository.save(pUser);
+		Instructor lInstructor = new Instructor();
+		lInstructor.setUserId(lUser.getUserId());
+		lInstructor.setAddress(lUser.getAddress());
+		lInstructor.setInstructorName(lUser.getUsername());
+		lInstructor.setEmail(lUser.getEmail());
+		lInstructor.setContact(lUser.getContact());
+		instructorRepository.save(lInstructor);
 	}
 
 	@Override

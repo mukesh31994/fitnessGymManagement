@@ -16,7 +16,10 @@ var $addInstructorform = $("#addInstructorform").validate({
     },
 // Rules for form validation
     rules: {
-        instructorName: {
+        username: {
+            required: true
+        },
+        password: {
             required: true
         },
         contact: {
@@ -35,8 +38,12 @@ var $addInstructorform = $("#addInstructorform").validate({
 
     },
     messages: {
-        instructorName: {
+        username: {
             required: 'Please enter full name',
+            alphabets: 'Alphabets only'
+        },
+         password: {
+            required: 'Please enter password',
             alphabets: 'Alphabets only'
         },
         contact: {
