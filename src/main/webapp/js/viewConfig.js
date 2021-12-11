@@ -62,7 +62,47 @@ var memberList = {
 	]
 };
 
+var adminList = {
+	columns: [
+		{
+			mDataProp: 'adminId',
+			title: 'ID',
+			type: 'number',
+			width: '20',
+			//			sortable: true,
 
+		},
+		{
+			mDataProp: 'adminName',
+			title: 'Admin Name',
+			type: 'string',
+			width: '20'
+			//			sortable: true
+		},
+		{
+			mDataProp: 'contact',
+			title: 'Contact',
+			type: 'string',
+			width: '20',
+			//			sortable: true
+		},
+		{
+			mDataProp: 'email',
+			title: 'Email',
+			type: 'string',
+			width: '20',
+			//			sortable: true
+		},
+		{
+			mDataProp: 'address',
+			title: 'Address',
+			type: 'string',
+			width: '20',
+			//			sortable: true,
+			//            render: dateFormat
+		}
+	]
+};
 
 var instructorList = {
 	columns: [
@@ -229,5 +269,6 @@ var viewConfig = {
 	"paymentList": paymentList,
 	"instructorList":instructorList,
 	"workoutList":workoutList,
-	"workoutPlanList":workoutPlanList
+	"workoutPlanList":workoutPlanList,
+	"adminList":adminList
 };

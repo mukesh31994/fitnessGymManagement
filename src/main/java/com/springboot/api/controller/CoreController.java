@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.api.model.Admin;
 import com.springboot.api.model.Attendance;
 import com.springboot.api.model.Instructor;
 import com.springboot.api.model.Member;
@@ -21,6 +22,7 @@ import com.springboot.api.model.Payment;
 import com.springboot.api.model.User;
 import com.springboot.api.model.Workout;
 import com.springboot.api.model.WorkoutPlan;
+import com.springboot.api.service.AdminService;
 import com.springboot.api.service.AttendanceService;
 import com.springboot.api.service.InstructorService;
 import com.springboot.api.service.MemberService;
@@ -54,7 +56,10 @@ public class CoreController {
 	WorkoutPlanService workoutPlanService;
 	
 	@Autowired
-	UserService userPlanService;
+	UserService userService;
+	
+	@Autowired
+	AdminService adminService;
 
 	@GetMapping("welcome")
 	public String getMessage() {
@@ -165,8 +170,13 @@ public class CoreController {
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public @ResponseBody String addUser(User lUser) {
 		lUser.setCreatedTime(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
-		userPlanService.saveUser(lUser);
+		userService.saveUser(lUser);
 		return "success";
+	}
+	
+	@RequestMapping(value = "/getAllAdmin", method = RequestMethod.POST)
+	public List<Admin> getAllAdmin() {
+		return adminService.findAll();
 	}
 	
 	
