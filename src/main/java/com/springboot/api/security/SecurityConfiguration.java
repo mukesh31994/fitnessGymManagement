@@ -26,17 +26,35 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/user").hasAnyRole("ADMIN", "USER")
-				.antMatchers("/").permitAll().and().formLogin().and()
-		        .logout()
-		        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").invalidateHttpSession(true)
-		        .permitAll();
+				.antMatchers("/").permitAll().and().formLogin().and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//        .logoutSuccessUrl("/login")
+				.invalidateHttpSession(true) // set invalidation state when logout
+				.deleteCookies("JSESSIONID").and().exceptionHandling().accessDeniedPage("/403");
 		;
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).invalidSessionUrl("/login");
 
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-				.sessionAuthenticationErrorUrl("/login?error").maximumSessions(1).maxSessionsPreventsLogin(false)
-				.expiredUrl("/login?expired").and().sessionFixation().newSession();
+		http.sessionManagement().maximumSessions(1).expiredUrl("/login?invalid-session=true");
 
 		http.csrf().disable();
+
+//http
+//.logout(logout -> logout                                                
+//    .logoutUrl("/logout")                                            
+//    .logoutSuccessUrl("/login")                       
+//    .invalidateHttpSession(true));
+//		http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/user").hasAnyRole("ADMIN", "USER")
+//				.antMatchers("/").permitAll().and().formLogin().and()
+//		        .logout()
+//		        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").invalidateHttpSession(true)
+//		        .permitAll();
+//		;
+//
+//		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+//				.sessionAuthenticationErrorUrl("/login?error").maximumSessions(1).maxSessionsPreventsLogin(false)
+//				.expiredUrl("/login?expired").and().sessionFixation().newSession();
+//
+//		http.csrf().disable();
 
 //        http
 //        .logout(logout -> logout                                                
