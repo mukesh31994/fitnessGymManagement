@@ -120,6 +120,7 @@ debugger;
 
 function OnLoad() {
 		$("#userId").val(JSON.parse(sessionStorage.user).userId);
+		$("#branchId").val(JSON.parse(sessionStorage.user).branchId);
 		var url = "/getAllMembershipType";
 		var lAjax1 = new FormAjax();
 		lAjax1.setUrl(url);
