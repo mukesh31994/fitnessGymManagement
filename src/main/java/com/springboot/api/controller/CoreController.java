@@ -190,10 +190,11 @@ public class CoreController {
 		return membershipTypeService.findAll();
 	}
 	
-	@RequestMapping(value = "/myusername", method = RequestMethod.GET)
+	@RequestMapping(value = "/myuser", method = RequestMethod.POST)
 	@ResponseBody
-	public String getUsername(HttpServletRequest req) {
-	    return req.getUserPrincipal().getName();
+	public User getUsername(HttpServletRequest req) {
+		User lUser = userService.findByUsername(req.getUserPrincipal().getName());
+	    return lUser;
 	}
 
 }

@@ -26,8 +26,7 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
             required: true,
             minlength: 10,
             maxlength: 10,
-            digits: true,
-            mobileNo: true
+            digits: true
         },
         age: {
             required: true,
@@ -58,8 +57,7 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
         },
         mobileNo: {
             required: 'Please enter mobile number',
-            digits: 'Digits only',
-            mobileNo: 'Enter valid mobile number'
+            digits: 'Digits only'
         },
         age: {
             required: 'Please enter age',
@@ -121,7 +119,7 @@ debugger;
 }
 
 function OnLoad() {
-
+		$("#userId").val(JSON.parse(sessionStorage.user).userId);
 		var url = "/getAllMembershipType";
 		var lAjax1 = new FormAjax();
 		lAjax1.setUrl(url);

@@ -15,48 +15,38 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+	@Autowired
+	UserDetailsService userDetailsService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
+	}
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/").permitAll()
-                .and().formLogin().and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))            
-//                .logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)        // set invalidation state when logout
-                .deleteCookies("JSESSIONID")        
-                .and()
-            .exceptionHandling()
-                .accessDeniedPage("/403");;
-//        http.sessionManagement()
-//        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-//        .invalidSessionUrl("/login");
-        
-        http.sessionManagement()
-        .maximumSessions(1)
-        .expiredUrl("/login?invalid-session=true");
-        
-        http.csrf().disable();
-        
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/user").hasAnyRole("ADMIN", "USER")
+				.antMatchers("/").permitAll().and().formLogin().and()
+		        .logout()
+		        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").invalidateHttpSession(true)
+		        .permitAll();
+		;
+
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+				.sessionAuthenticationErrorUrl("/login?error").maximumSessions(1).maxSessionsPreventsLogin(false)
+				.expiredUrl("/login?expired").and().sessionFixation().newSession();
+
+		http.csrf().disable();
+
 //        http
 //        .logout(logout -> logout                                                
 //            .logoutUrl("/logout")                                            
 //            .logoutSuccessUrl("/login")                       
 //            .invalidateHttpSession(true));
-    }
+	}
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+	@Bean
+	public PasswordEncoder getPasswordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 }

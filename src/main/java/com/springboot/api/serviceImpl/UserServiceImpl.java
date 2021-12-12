@@ -1,6 +1,7 @@
 package com.springboot.api.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findByUserId(int pUserId) {
 		return userRepository.findByUserId(pUserId);
+	}
+	
+	@Override
+	public User findByUsername(String pUsername) {
+		Optional<User> optional = userRepository.findByUsername(pUsername);	
+		return optional.get();
 	}
 
 }
