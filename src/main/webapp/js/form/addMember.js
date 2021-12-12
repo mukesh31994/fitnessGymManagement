@@ -120,4 +120,23 @@ debugger;
     }
 }
 
+function OnLoad() {
+
+		var url = "/getAllMembershipType";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url);
+		lAjax1.setSync(true);
+		lAjax1.setData($('form').serialize())
+		lAjax1.addEventListener('success', function (response) {
+			var dataSet = JSON.parse(response);
+			$.each(dataSet, function (i, item) {
+				$('<option>').val(item.membershipId).text(item.membershipName + " - " + item.membershipAmount + " Euro").appendTo('#membershipId');
+			});
+
+		});
+		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
 

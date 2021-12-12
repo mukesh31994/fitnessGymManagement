@@ -1,6 +1,5 @@
 package com.springboot.api.controller;
 
-import java.security.Principal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -18,6 +17,7 @@ import com.springboot.api.model.Admin;
 import com.springboot.api.model.Attendance;
 import com.springboot.api.model.Instructor;
 import com.springboot.api.model.Member;
+import com.springboot.api.model.MembershipType;
 import com.springboot.api.model.Payment;
 import com.springboot.api.model.User;
 import com.springboot.api.model.Workout;
@@ -26,6 +26,7 @@ import com.springboot.api.service.AdminService;
 import com.springboot.api.service.AttendanceService;
 import com.springboot.api.service.InstructorService;
 import com.springboot.api.service.MemberService;
+import com.springboot.api.service.MembershipTypeService;
 import com.springboot.api.service.PaymentService;
 import com.springboot.api.service.UserService;
 import com.springboot.api.service.WorkoutPlanService;
@@ -57,6 +58,9 @@ public class CoreController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MembershipTypeService membershipTypeService;
 	
 	@Autowired
 	AdminService adminService;
@@ -181,6 +185,10 @@ public class CoreController {
 		return adminService.findAll();
 	}
 	
+	@RequestMapping(value = "/getAllMembershipType", method = RequestMethod.POST)
+	public List<MembershipType> getAllMembershipType() {
+		return membershipTypeService.findAll();
+	}
 	
 	@RequestMapping(value = "/myusername", method = RequestMethod.GET)
 	@ResponseBody
