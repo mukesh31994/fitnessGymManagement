@@ -138,6 +138,7 @@ public class CoreController {
 
 	@RequestMapping(value = "/addWorkout", method = RequestMethod.POST)
 	public @ResponseBody String addWorkout(Workout lWorkout) {
+		lWorkout.setCreatedDate(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
 		workoutService.saveWorkout(lWorkout);
 		return "success";
 	}

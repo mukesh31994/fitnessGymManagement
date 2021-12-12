@@ -45,7 +45,7 @@ var $createWorkoutform = $("#createWorkoutform").validate({
 function saveWorkout() {
 debugger;
     if ($createWorkoutform.valid()) {
-	
+	$("#userId").val(JSON.parse(sessionStorage.user).userId);
     var url1 = "/addWorkout";
     var lAjax1 = new FormAjax();
     lAjax1.setUrl(url1);

@@ -1,6 +1,7 @@
 package com.springboot.api.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,10 @@ public class Workout {
 	private String description;
 
 	@Column(name = "createdDate", length = 11)
-	private Date createdDate;
+	private Timestamp createdDate;
+	
+	@Column(name = "userId", unique = true, nullable = false, length = 11)
+	private int userId;
 
 	public int getWorkoutId() {
 		return workoutId;
@@ -51,19 +55,27 @@ public class Workout {
 		this.description = description;
 	}
 
-	public Date getCreatedDate() {
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	@Override
 	public String toString() {
 		return "Workout [workoutId=" + workoutId + ", workoutName=" + workoutName + ", description=" + description
-				+ ", createdDate=" + createdDate + "]";
+				+ ", createdDate=" + createdDate + ", userId=" + userId + "]";
 	}
+
 
 }

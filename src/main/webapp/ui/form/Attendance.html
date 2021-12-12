@@ -70,12 +70,12 @@
 	}
 
 	function AddAttendance() {
-
+		
 		var url = "/addAttendance";
 		var lAjax1 = new FormAjax();
 		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
-		lAjax1.setData({"memberId": $("#member").val(), "userId": "1"})
+		lAjax1.setData({"memberId": $("#member").val(), "userId": JSON.parse(sessionStorage.user).userId})
 		lAjax1.addEventListener('success', function (response) {
 			if (response == "success") {
 				$.smallBox({
