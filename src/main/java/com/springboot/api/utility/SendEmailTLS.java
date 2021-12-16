@@ -56,7 +56,7 @@ public class SendEmailTLS {
             // second part (the image)
             messageBodyPart = new MimeBodyPart();
             DataSource fds = new FileDataSource(
-               "/home/manisha/javamail-mini-logo.png");
+               "src/main/webapp/images/logo.png");
 
             messageBodyPart.setDataHandler(new DataHandler(fds));
             messageBodyPart.setHeader("Content-ID", "<image>");
