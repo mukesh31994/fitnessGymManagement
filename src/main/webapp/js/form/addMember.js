@@ -92,7 +92,7 @@ function saveMember() {
 debugger;
     if ($customerUpdateForm.valid()) {
 	
-    var url1 = "http://localhost:8080/addMember";
+    var url1 = "/addMember";
     var lAjax1 = new FormAjax();
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);

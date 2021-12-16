@@ -16,10 +16,10 @@ var memberList = {
 			width: '20',
 			render: function(pValue, meta, record) {
 				debugger;
-				var reqStr = '<a  href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
+				var reqStr = '<a    href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
 			}
-			//			sortable: true
+			//			sortable: true class="btn btn-info btn-sm"
 		},
 		{
 			mDataProp: 'lastName',

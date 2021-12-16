@@ -155,9 +155,9 @@
 					
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 						<img src="img/avatars/sunny.png" alt="me" class="online" /> 
-						<span>
-							Mukesh Sharma 
-						</span>
+						<span id="userName">
+							
+						</span >
 						
 					</a> 
 					
@@ -330,6 +330,7 @@
 			if (!window.jQuery.ui) {
 				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
 			}
+			document.getElementById("userName").innerText = JSON.parse(sessionStorage.getItem("user")).username;
 		</script>
 
 		<!-- IMPORTANT: APP CONFIG -->
