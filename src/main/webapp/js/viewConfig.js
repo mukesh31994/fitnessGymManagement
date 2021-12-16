@@ -5,6 +5,7 @@ var memberList = {
 			mDataProp: 'memberId',
 			title: 'ID',
 			type: 'number',
+			visible: false,
 			width: '20',
 			//			sortable: true,
 
@@ -14,11 +15,11 @@ var memberList = {
 			title: 'First Name',
 			type: 'string',
 			width: '20',
-			render: function(pValue, meta, record) {
+			/*render: function(pValue, meta, record) {
 				debugger;
 				var reqStr = '<a    href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
-			}
+			}*/
 			//			sortable: true class="btn btn-info btn-sm"
 		},
 		{
@@ -45,7 +46,7 @@ var memberList = {
 		},
 		{
 			mDataProp: 'age',
-			title: 'age',
+			title: 'Age',
 			type: 'string',
 			width: '20',
 			//			sortable: true,
@@ -58,6 +59,17 @@ var memberList = {
 			width: '20',
 			//			sortable: true,
 			//            render: dateFormat
+		},
+		{
+			mDataProp: '',
+			title: 'Edit',
+			type: 'string',
+			width: '20',
+			render: function(pValue, meta, record) {
+				debugger;
+				var reqStr = '<a class="btn btn-info btn-sm" href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">Edit <i class="fa fa-edit"></i> </a>';
+				return reqStr;
+			}
 		}
 	]
 };
