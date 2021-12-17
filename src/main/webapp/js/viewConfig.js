@@ -236,9 +236,8 @@ var attendanceList = {
 			title: 'Member Id',
 			type: 'string',
 			width: '20',
-			render: function(pValue, meta, record) {
-				debugger;
-				return pValue;
+			render: function(nRow, meta, record,iDisplayIndex) {
+				return iDisplayIndex.row+1;
 			}
 		},
 		{
