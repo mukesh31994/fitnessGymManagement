@@ -2,7 +2,7 @@
 	<div class="jarviswidget jarviswidget-color-darken" style="" id="wid-id-0">
 		<header>
 			<span> <i></i> </span>
-			<h2>Add Payment</h2>
+			<h2>Add Advertisement</h2>
 		</header>
 		<form id="updateCustomerform" class="smart-form" autocomplete="off">
 			<input type="hidden" class="form-control" name="userId" id="userId" >
@@ -19,8 +19,9 @@
 					<section class="col col-6">
 						<label class="label">Select Template</label>
 						<label class="select">
-							<select name="templateId" id="templateId" multiple="multiple" class="form-control custom-scroll" title="Click to Select a Template">
-								<option value="Hi, $Name ! Don’t miss out on our summer savings on personal training sessions.">Saving</option >
+							<select name="templateId" id="templateId" title="Click to Select a Template">
+								<option value="Hi, $Name ! Don’t miss out on our summer savings on personal training sessions.">Saving</option  >
+								<option value="Hi, $Name ! Don’t miss out on our summer savings on personal training sessions.">Offer</option >
 							</select>
 							<i></i>
 						</label>
@@ -29,7 +30,7 @@
 			</fieldset>
 			<footer>
 				<div class="col col-md-6">
-					<input type="button" class="btn btn-primary" id="btnSave" value="Add Payment" onclick="AddPayment();">
+					<input type="button" class="btn btn-primary" id="btnSave" value="Send E-Mail" onclick="sendMail();">
 				</div>
 			</footer>
 
@@ -59,13 +60,13 @@
 		lAjax1.execute();
 	}
 	
-	function AddPayment() {
+	function sendMail() {
 
-		var url = "/addPayment";
+		var url = "/sendPromotionalEmail";
 		var lAjax1 = new FormAjax();
 		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
-		lAjax1.setData($('form').serialize())
+		lAjax1.setData({"memberList":$('#memberId').val().toString(),"templateId":$('#templateId').val()})
 		lAjax1.addEventListener('success', function (response) {
 			if (response == "success") {
 				$.smallBox({

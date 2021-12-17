@@ -1,5 +1,6 @@
 package com.springboot.api.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -196,6 +197,13 @@ public class CoreController {
 	public User getUsername(HttpServletRequest req) {
 		User lUser = userService.findByUsername(req.getUserPrincipal().getName());
 	    return lUser;
+	}
+	
+	/* promotional */
+	
+	@RequestMapping(value = "/sendPromotionalEmail", method = RequestMethod.POST)
+	public void sendPromotionalEmail(@RequestParam(value = "memberList") String[] memberList, @RequestParam(value = "templateId") String templateId) {
+		System.out.println(memberList[0]);
 	}
 
 }

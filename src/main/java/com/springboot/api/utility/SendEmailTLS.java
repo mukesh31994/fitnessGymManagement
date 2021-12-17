@@ -13,71 +13,62 @@ import java.util.Properties;
 
 public class SendEmailTLS {
 
-    public static void main(String[] args) {
+	public boolean sendEmailToMember() {
+		boolean result = false;
+		final String username = "mukeshsharma31994@gmail.com";
+		final String password = "sjxfssqcgqygsape";
 
-        final String username = "mukeshsharma31994@gmail.com";
-        final String password = "sjxfssqcgqygsape";
-
-        Properties prop = new Properties();
+		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-        
-        Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+		prop.put("mail.smtp.port", "587");
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true"); // TLS
 
-        try {
+		Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
 
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("mukeshsharma31994@gmail.com"));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse("mukeshsharma31994@gmail.com")
-            );
-            message.setSubject("Testing Gmail TLS");
-            
-            ///////////////////////////////////////
-            
-         // This mail has 2 part, the BODY and the embedded image
-            MimeMultipart multipart = new MimeMultipart("related");
+		try {
 
-            // first part (the html)
-            BodyPart messageBodyPart = new MimeBodyPart();
-            String htmlText = "<H1>Hello</H1><img src=\"cid:image\">";
-            messageBodyPart.setContent(htmlText, "text/html");
-            // add it
-            multipart.addBodyPart(messageBodyPart);
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("mukeshsharma31994@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mukeshsharma31994@gmail.com"));
+			message.setSubject("Testing Gmail TLS");
 
-            // second part (the image)
-            messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource(
-               "src/main/webapp/images/logo.png");
 
-            messageBodyPart.setDataHandler(new DataHandler(fds));
-            messageBodyPart.setHeader("Content-ID", "<image>");
+			// This mail has 2 part, the BODY and the embedded image
+			MimeMultipart multipart = new MimeMultipart("related");
 
-            // add image to the multipart
-            multipart.addBodyPart(messageBodyPart);
+			// first part (the html)
+			BodyPart messageBodyPart = new MimeBodyPart();
+			String htmlText = "<H1>Hello</H1><img src=\"cid:image\">";
+			messageBodyPart.setContent(htmlText, "text/html");
+			// add it
+			multipart.addBodyPart(messageBodyPart);
 
-            // put everything together
-            message.setContent(multipart);
-            
-            ///////////////////////////////////////
-//            message.setText("Dear Mail Crawler Testing,"
-//                    + "\n\n Please do not spam my email!");
+			// second part (the image)
+			messageBodyPart = new MimeBodyPart();
+			DataSource fds = new FileDataSource("src/main/webapp/images/logo.png");
 
-            Transport.send(message);
+			messageBodyPart.setDataHandler(new DataHandler(fds));
+			messageBodyPart.setHeader("Content-ID", "<image>");
 
-            System.out.println("Done");
+			// add image to the multipart
+			multipart.addBodyPart(messageBodyPart);
 
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
+			// put everything together
+			message.setContent(multipart);
+
+			Transport.send(message);
+
+			result = true;
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

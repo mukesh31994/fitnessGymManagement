@@ -90,7 +90,7 @@ function FormAjax() {
     };
 
 
-    this.execute = function () {debugger;
+    this.execute = function () {
         $(document).ajaxStart(function () {
            // Pace.restart();
         });
