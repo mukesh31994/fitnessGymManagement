@@ -20,8 +20,8 @@
 						<label class="label">Select Template</label>
 						<label class="select">
 							<select name="templateId" id="templateId" title="Click to Select a Template">
-								<option value="Hi, $Name ! Don’t miss out on our summer savings on personal training sessions.">Saving</option  >
-								<option value="Hi, $Name ! Don’t miss out on our summer savings on personal training sessions.">Offer</option >
+								<option value="Hi, Sir ! Don’t miss out on our summer savings on personal training sessions.">Saving</option  >
+								<option value="Hi, Sir ! Don’t miss out on our summer savings on personal training sessions.">Offer</option >
 							</select>
 							<i></i>
 						</label>
@@ -67,25 +67,25 @@
 		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
 		lAjax1.setData({"memberList":$('#memberId').val().toString(),"templateId":$('#templateId').val()})
-		lAjax1.addEventListener('success', function (response) {
-			if (response == "success") {
+		lAjax1.addEventListener('success', function (response) {debugger;
+			if (response == "true") {
 				$.smallBox({
-					title: "Payment",
-					content: "<i class='fa fa-clock-o'></i> <i>Payment Updated Successfully...</i>",
+					title: "Promotion",
+					content: "<i class='fa fa-clock-o'></i> <i>Email Sent Successfully...</i>",
 					color: "#659265",
 					iconSmall: "fa fa-check fa-2x fadeInRight animated",
 					timeout: 4000
 				});
 			} else {
 				$.smallBox({
-					title: "Payment",
+					title: "Promotion",
 					content: "<i class='fa fa-clock-o'></i> <i>Something went wrong...</i>",
 					color: "#659265",
 					iconSmall: "fa fa-check fa-2x fadeInRight animated",
 					timeout: 4000
 				});
 			}
-			window.location.href="#ui/form/AddPayment.html";
+		//	window.location.href="#ui/form/AddPayment.html";
 
 		});
 		lAjax1.addEventListener('error', function (textStatus, errorThrown) {

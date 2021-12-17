@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class SendEmailTLS {
 
-	public boolean sendEmailToMember() {
+	public boolean sendEmailToMember(String[] memberList, String templateId) {
 		boolean result = false;
 		final String username = "mukeshsharma31994@gmail.com";
 		final String password = "sjxfssqcgqygsape";
@@ -33,9 +33,10 @@ public class SendEmailTLS {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("mukeshsharma31994@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mukeshsharma31994@gmail.com"));
-			message.setSubject("Testing Gmail TLS");
+			message.setFrom(new InternetAddress(username));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(String.join(",",memberList)));
+//			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mukeshsharma31994@gmail.com"));
+			message.setSubject("Fitness GYM Application");
 
 
 			// This mail has 2 part, the BODY and the embedded image
@@ -43,7 +44,7 @@ public class SendEmailTLS {
 
 			// first part (the html)
 			BodyPart messageBodyPart = new MimeBodyPart();
-			String htmlText = "<H1>Hello</H1><img src=\"cid:image\">";
+			String htmlText = "<H1>"+templateId+"</H1><img src=\"cid:image\">";
 			messageBodyPart.setContent(htmlText, "text/html");
 			// add it
 			multipart.addBodyPart(messageBodyPart);

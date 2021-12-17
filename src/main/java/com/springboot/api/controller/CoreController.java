@@ -32,6 +32,7 @@ import com.springboot.api.service.PaymentService;
 import com.springboot.api.service.UserService;
 import com.springboot.api.service.WorkoutPlanService;
 import com.springboot.api.service.WorkoutService;
+import com.springboot.api.utility.SendEmailTLS;
 
 //import com.google.gson.Gson;
 //import com.management.common.model.User_Master;
@@ -202,8 +203,10 @@ public class CoreController {
 	/* promotional */
 	
 	@RequestMapping(value = "/sendPromotionalEmail", method = RequestMethod.POST)
-	public void sendPromotionalEmail(@RequestParam(value = "memberList") String[] memberList, @RequestParam(value = "templateId") String templateId) {
-		System.out.println(memberList[0]);
+	public boolean sendPromotionalEmail(@RequestParam(value = "memberList") String[] memberList, @RequestParam(value = "templateId") String templateId) {
+		SendEmailTLS lSendEmailTLS = new SendEmailTLS();
+		boolean lResult = lSendEmailTLS.sendEmailToMember(memberList,templateId);
+		return lResult;
 	}
 
 }
