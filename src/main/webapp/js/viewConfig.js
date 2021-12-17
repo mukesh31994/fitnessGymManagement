@@ -233,7 +233,7 @@ var attendanceList = {
 	columns: [
 		{
 			mDataProp: 'memberId',
-			title: 'Member Id',
+			title: 'Serial Number',
 			type: 'string',
 			width: '20',
 			render: function(nRow, meta, record,iDisplayIndex) {
@@ -242,7 +242,7 @@ var attendanceList = {
 		},
 		{
 			mDataProp: 'date',
-			title: 'Date',
+			title: 'Attendance Date',
 			type: 'string',
 			width: '20',
 			//			sortable: true,
