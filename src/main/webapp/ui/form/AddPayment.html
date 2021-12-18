@@ -43,11 +43,19 @@
 		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
 		lAjax1.setData()
-		lAjax1.addEventListener('success', function (response) {
+		lAjax1.addEventListener('success', function (response) {debugger;
 			var dataSet = JSON.parse(response);
 			$.each(dataSet, function (i, item) {
 				$('<option>').val(item.memberId).text(item.firstName + " - " + item.email).appendTo('#memberId');
 			});
+			var url = (window.location).href.includes("=");
+			if(url) {
+				var memberId = (window.location).href.substring(((window.location).href).lastIndexOf('=') + 1);
+				$("#memberId").val(memberId);
+		//	var member = dataSet.find(item => item.memberId === 77);
+			}
+			
+			
 
 		});
 		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
@@ -82,6 +90,23 @@
 				});
 			}
 			window.location.href="#ui/form/AddPayment.html";
+
+		});
+		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
+	
+	function CalculatePayment(memberId) {
+
+		var url = "/calculatePayment";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url);
+		lAjax1.setSync(true);
+		lAjax1.setData({"memberId" : memberId})
+		lAjax1.addEventListener('success', function (response) {
+			
 
 		});
 		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
