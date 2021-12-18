@@ -8,5 +8,5 @@ import com.springboot.api.model.MembershipType;
 @Repository
 public interface MembershipTypeRepository extends JpaRepository<MembershipType, Integer> {
 
-	
+	public MembershipType findByMembershipId(int pMembershipId);
 }
