@@ -1,5 +1,6 @@
 package com.springboot.api.serviceImpl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class AttendanceServiceImpl implements AttendanceService {
 	public List<Attendance> findByMemberId(int pMemberId){
 		return attendanceRepository.findByMemberId(pMemberId);
 	}
+
+//	@Override
+//	public List<Attendance> findByMemberIdAndDate(int memberId, Date date) {
+//		return attendanceRepository.findByMemberIdAndDate(memberId,date);
+//	}
 
 }
