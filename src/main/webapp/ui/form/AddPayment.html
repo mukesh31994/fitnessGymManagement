@@ -102,9 +102,9 @@
 					timeout: 4000
 				});
 			}
-			
+			$("#amount").val("");
 			CalculatePayment($("#memberId").val());
-			window.location.href="#ui/form/AddPayment.html";
+			// window.location.href="#ui/form/AddPayment.html";
 
 		});
 		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
