@@ -2,7 +2,9 @@ package com.springboot.api.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -210,6 +212,17 @@ public class CoreController {
 		SendEmailTLS lSendEmailTLS = new SendEmailTLS();
 		boolean lResult = lSendEmailTLS.sendEmailToMember(memberList,templateId);
 		return lResult;
+	}
+	
+	@RequestMapping(value = "/calculatePayment", method = RequestMethod.POST)
+	public Map<String,String> calculatePayment(@RequestParam(value = "memberId") int memberId) {
+		Map<String,String> lMap = new HashMap<String, String>();
+		List<Payment> lPaymentList = paymentService.findByMemberId(memberId);
+		int sum = lPaymentList.stream().mapToInt(o -> Integer.parseInt(o.getAmount())).sum();
+		Member lMember = memberService.findByMemberId(memberId);
+		lMap.put("totalPayment", sum + "");
+		lMap.put("membershipAmount", sum + "");
+		return lMap;
 	}
 
 }
