@@ -242,9 +242,12 @@ var attendanceList = {
 		},
 		{
 			mDataProp: 'date',
-			title: 'Attendance Date',
+			title: 'Attendance Punching Time',
 			type: 'string',
 			width: '20',
+			render: function(data, type, row) {//data
+				return moment(row.date).format('DD/MM/YYYY hh:mm:ss');
+			}
 			//			sortable: true,
 
 		}
