@@ -1,0 +1,431 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+html,body{
+    min-height: 100% !important;
+    background:#fff;
+}
+
+body{
+    background: #fff;
+    /*background: yellow;*/
+    height: 100%;
+
+}
+
+#main{
+    min-height:100%;
+    /*height: 500px;*/
+
+}
+#content , #pageContent{                
+    min-height:100%;
+    overflow: auto;
+    /*background: yellow;*/
+}
+
+#widget-grid{
+    width: 100%;
+    margin-left: -5px;
+    padding-left: 10px;
+}
+
+#content{
+    height: 100%;
+    /*background: blue;*/
+}
+
+/* Modified this class for better look and feel */
+.smart-style-0 .tab-content{
+    background: white;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+/*class for align top of tabs*/
+.aligntopright{
+    padding-left:2px;
+    vertical-align: top; 
+}
+
+/* overriding tab style*/
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 6px 20px 6px;
+}
+
+.jarviswidget{
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    color: #333333;   
+    width : auto;
+}
+
+.smart-style-5 .jarviswidget{
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    color: #ffffff;
+   
+}
+
+/*we need to implement this class for all version in scss.*/
+.formPanel{
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    color: #555; 
+    background: #fff;         
+    height:100%;
+    width:100%;  
+
+}
+
+.formPanel > header{
+    border-bottom: 3px solid #fff;
+    border-color: #11a9cc;
+    display:block;
+    background: rgba(248,248,248,.9);
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    color: #555;    
+    padding-left: 12px;    
+    padding-top:8px;
+    padding-bottom:8px;    
+    text-align: left;
+    font-weight: 400 !important;
+    font-size: 16px;
+}
+
+.formHeader .bordered-sky{
+    border-color: #11a9cc !important;
+}
+
+.fullHeight{
+    height:100%;    
+}
+
+.formBody{
+    padding:10px;
+    background: #ffffff;
+    /*background:#fff;*/
+    width:100%;
+    height:calc(100% - 45px);    
+}
+.formPanel footer,.listfooter{
+    position: fixed;
+    bottom:2px;
+    width:100%;
+    background: rgba(248,248,248,.9);
+    height: 50px;
+    margin: 5px 0 0 2px;
+    padding: 7px 14px 15px;
+    border-top: 1px solid rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jarviswidget>div {
+    font-size: 12px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, 
+.table>thead>tr>td, .table>thead>tr>th {
+    padding: 4px 6px;
+}
+
+#titlebarfont{
+    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 14px;
+}
+#setday1, #setWeek1, #setMonth1, #setYear1 , #setday2, #setWeek2, #setMonth2, #setYear2, #setday3, #setWeek3, #setMonth3, #setYear3{
+    float: right;
+    font-size: 16px;
+}
+
+/*********  Code Begin for  earnburn.html ****/
+#formEarnBurn #reqCode{
+    height: 40px;
+    width : 70%;
+    margin-top: 7%;
+    margin-left:20%;
+    /*    padding-left: 1%;*/
+
+}
+#btnEarn,#btnBurn,#btnVoid,#btnCashBack{
+    /*    margin-left : 30px;
+        margin-right : 30px;*/
+    width: 80%;
+    margin-top: 1%;
+    /*margin-top: 0px;*/
+}
+#btnEarn > .imgEarn{
+    width: 25px;
+    height: 25px;
+    margin-right: 3%;
+}
+#btnCashBack > .btnCashBack{
+    width: 25px;
+    height: 25px;
+    margin-right: 3%;
+}
+
+#btnBurn > .imgBurn{
+    width: 25px;
+    height: 25px;
+    margin-right: 3%;
+}
+
+#btnEarnBurnVoid{
+    margin:0;
+    width: 50%;
+    height: 100%;
+}
+
+#cashBackBtn{
+    margin:0;
+    width: 50%;
+    height: 100%;
+}
+#amountToPay{
+/*    background-color: lightgoldenrodyellow;*/
+    font-weight: bold;
+}
+.footerRow>div{
+    height: 47px;
+    /*height:100%;*/
+}
+.tableTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+
+/********** Code End for earnburn.html   ************/
+
+.margin-5{
+    margin:5px;
+}
+
+.margin-top5{
+    margin-top: 5px;
+}
+
+.margin-top10{
+    margin-top: 10px;
+}
+
+.margin-top15{
+    margin-top: 15px;
+}
+
+.hide{
+    display: none;
+
+}
+.storeListItem{
+    padding-top : 10px;
+}
+
+/* Dashboard.html*/ 
+#counter
+{
+    /*background-color: lightcoral;*/
+    /*    width: 100px;
+        height: 100px;*/
+
+    /*border-radius: 50px;*/
+    /*float:left;*/
+    /*margin:5px;*/
+    text-align: center;
+}
+.count
+{
+    /*background-color: green;*/
+    line-height: 30px;
+    color:black;
+    /*margin-left:30px;*/
+    font-size:20px;
+    
+}
+.cardTitle{
+    
+    padding-bottom: 0px;
+    text-align: center;
+    font-size:16px;
+    font-weight: bold;
+    color: grey;
+}
+.thumbnail img{
+    height:35%;
+    width: 20%;
+    padding-top: 5px;
+}
+.donutContainer{
+    height: 200px;
+    margin: 0;
+    box-shadow: 5px 1px 10px gainsboro;
+}
+.boxShadow{
+    box-shadow: 5px 1px 10px gainsboro;
+    height: 150px;
+}
+.boxShadow .caption{
+    padding-bottom: 0px;
+    margin-top: 10px;
+    /*background-color: yellow;*/
+}
+#sparks .sparks-info{
+    padding-top: 2.5%;
+}
+#totalBusiness{
+    padding: 0;
+    margin: 0;
+}
+#paidAmount{
+    padding: 0;
+    margin: 0;
+}
+#earnedCounter{
+    padding: 0;
+    margin: 0;
+}
+#burnedCounter{
+    padding: 0;
+    margin: 0;
+}
+#totalCustomer{
+    padding: 0;
+    margin: 0;
+}
+#balanceSMS{
+    padding: 0;
+    margin: 0;
+}
+#container1 , #container3 , #container2{
+    width:100%;
+    height:100%;
+    padding-bottom: 10px;
+}
+
+/* End of Dashboard.html*/ 
+
+#customerTable{
+    /*margin-bottom: 0px;*/
+    /*padding-bottom: 0px;*/
+}
+#customerHead{
+    font-size: 16px;
+    /*background-color: grey;*/
+    padding: 5px;
+}
+#customerTable tbody{
+    font-size: 16px;
+}
+#summaryTable{
+    font-size: 16px;
+}
+.dashboardTable{
+    font-size: 14px;
+}
+#totalCustomer, #repeatCustomer, #balanceSMS, #usedSMS{
+    font-weight: bold;
+}
+.merchantWorldHome{
+    color:#ffffff;
+}
+#logo img{
+    height: 80%;
+    width: 25%;
+}
+a.merchantWorldHome:visited{
+    color:#ffffff;
+}
+
+/* helpPage.html */
+
+.containerTitle{
+    text-align: center;
+    background-color: lavender;
+}
+.containerTitle>h2{
+    font-size: 24px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    text-shadow:2px 2px 5px grey;
+}
+.titleShortCutKey{
+    font-weight: bolder;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+.lableShortKey{
+    font-weight: bolder;
+}
+.footerHelpPage{
+    position: fixed;
+    bottom:10%;
+}
+.containerChangePassword footer{
+    border: none;
+    background-color: #FFFFFF;
+}
+.containerChangePassword footer #btnAdd{
+    float:left;
+    margin-left: 70px;
+}
+.containerChangePassword footer #errorMsg{
+    margin-top: 70px;
+    margin-left: 50px;
+}
+/* End code for helpPage*/ 
+
+/* Start code for aboutUs.html*/
+
+.aboutUs>.jarviswidget{
+    margin-top: 2%;
+}
+.aboutUs .contentContainer{
+  padding: 40px;  
+}
+.aboutUs .contentContainer .para1 .para2 .para3{
+    font-size: 14px;
+    text-align: justify;
+}
+
+/* Start for ReportDetail.html */
+.reportrange{
+    background: #fff; 
+    cursor: pointer;
+    margin-top:5px; 
+    padding: 5px 10px; 
+    border: 1px solid #ccc; 
+    width: 30%;
+}
+
+
+/* End for ReportDetail.html */
+.ScrollStyle
+{
+   overflow-x: auto; 
+}

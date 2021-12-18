@@ -1,0 +1,156 @@
+<div class=" padding-top-10 bg-color-white">
+	<div class="jarviswidget jarviswidget-color-darken" style="" id="wid-id-0">
+		<header>
+			<span> <i></i> </span>
+			<h2>Workout Plan</h2>
+		</header>
+		<form id="updateCustomerform" class="smart-form" autocomplete="off">
+			<fieldset>
+				<div class="row">
+					<section class="col col-6">
+						<label class="label">Select Member</label>
+						<label class="select">
+							<select name="memberId" id="memberId">
+							</select>
+							<i></i>
+						</label>
+					</section>
+				</div>
+
+			</fieldset>
+			<footer>
+				<div class="col col-md-6">
+					<input type="button" class="btn btn-primary" id="btnSave" value="View Plan"
+						onclick="ViewPlan();">
+				</div>
+			</footer>
+
+		</form>
+	</div>
+</div>
+<div class="fullHeight padding-top-5 bg-color-white" style="display: none;" id="WorkoutPlanList">
+	<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0">
+		<header>
+			<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+			<h2>Member Workout Plan</h2>
+		</header>
+		<div>
+			<div class="widget-body no-padding">
+				<div class="ScrollStyle xAxis yAxis">
+					<table data-order='[[ 0, "desc" ]]' id="example" class="table table-striped table-bordered"
+						style="width:100%"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	let workoutJson= {};
+	var workoutPlanList = {
+			columns: [
+				{
+					mDataProp: 'planId',
+					title: 'ID',
+					type: 'number',
+					width: '20',
+					render: function(pValue, meta, record) {
+						debugger;
+						var reqStr = '<a  href="#ui/form/UpdateWorkoutPlan.html?id=' + record.planId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
+						return reqStr;
+					}
+				},
+				{
+					mDataProp: 'workoutId',
+					title: 'Workout Name',
+					type: 'string',
+					width: '20',
+					render: function(pValue, meta, record) {
+						debugger;
+						return workoutJson[pValue];
+					}
+				},
+				{
+					mDataProp: 'workoutDate',
+					title: 'Date',
+					type: 'date',
+					width: '20'
+				},
+				{
+					mDataProp: 'instructorId',
+					title: 'instructor Id',
+					type: 'number',
+					width: '20'
+				}
+			]
+		};
+	function OnLoad() {
+		
+		var url = "/getAllMember";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url);
+		lAjax1.setSync(true);
+		lAjax1.setData($('form').serialize())
+		lAjax1.addEventListener('success', function (response) {
+			var dataSet = JSON.parse(response);
+			$.each(dataSet, function (i, item) {
+				$('<option>').val(item.memberId).text(item.firstName + " - " + item.email).appendTo('#memberId');
+			});
+
+		});
+		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+		
+		
+		var url1 = "/getAllWorkout";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url1);
+		lAjax1.setSync(true);
+		lAjax1.setData($('form').serialize())
+		lAjax1.addEventListener('success', function(response) {
+			var dataSet = JSON.parse(response);
+			$.each(dataSet, function (i, item) {
+				workoutJson[item.workoutId] = item.workoutName;
+			});
+		});
+		lAjax1.addEventListener('error', function(textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
+
+	function ViewPlan() {
+		var url1 = "/getWorkoutPlanByMemberId";
+		var lAjax1 = new FormAjax();
+		lAjax1.setUrl(url1);
+		lAjax1.setSync(true);
+		lAjax1.setData({"memberId": $("#memberId").val()})
+		lAjax1.addEventListener('success', function (response) {
+			debugger;
+			if ($.fn.DataTable.isDataTable('#example')) {
+				$('#example').DataTable().destroy();
+			}
+			$('#example tbody').empty();
+			$("#WorkoutPlanList").css("display", "block");
+			var dataSet = JSON.parse(response);
+			$('#example').dataTable({
+				"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+					"t" +
+					"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+				"autoWidth": true,
+				"oLanguage": {
+					"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>',
+					"order": [[3, "desc"]]
+				},
+				data: dataSet,
+				columns: workoutPlanList.columns
+			});
+
+		});
+		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
+</script>
