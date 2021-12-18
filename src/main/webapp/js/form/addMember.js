@@ -106,7 +106,8 @@ debugger;
 			iconSmall: "fa fa-check fa-2x fadeInRight animated",
 			timeout: 4000
 		});
-		
+		JSON.parse(response).memberId
+		window.location.href="#ui/form/AddPayment.html?id=" +JSON.parse(response).memberId
 	//	window.location.href="#ui/list/ListMember.html";
     });
     lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
