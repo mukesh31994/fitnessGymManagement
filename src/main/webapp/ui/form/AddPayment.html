@@ -24,6 +24,14 @@
 						</label>
 					</section>
 				</div>
+				<div class="row">
+					<section class="col col-6">
+						<h1>Membership Amount :  <span style="color: crimson;" id="memberShipAmountId"></span></h1>
+					</section>
+					<section class="col col-6">
+						<h1>Amount Paid Till Date :  <span style="color: crimson;" id="paidAmountId"></span></h1>
+					</section>
+				</div>
 			</fieldset>
 			<footer>
 				<div class="col col-md-6">
@@ -108,7 +116,14 @@
 		lAjax1.setData({"memberId" : memberId})
 		lAjax1.addEventListener('success', function (response) {
 			debugger;
-			
+			var membershipAmount = parseInt(JSON.parse(response).membershipAmount);
+			var totalPayment = parseInt(JSON.parse(response).totalPayment);
+			document.getElementById("memberShipAmountId").innerHTML = membershipAmount;
+			document.getElementById("paidAmountId").innerHTML = totalPayment;
+			if(totalPayment > membershipAmount){
+				$("#btnSave").attr("disabled","disabled");
+				$("#amount").attr("disabled","disabled");
+			}
 
 		});
 		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
