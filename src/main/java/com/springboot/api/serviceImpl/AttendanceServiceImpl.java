@@ -2,6 +2,7 @@ package com.springboot.api.serviceImpl;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 		attendanceRepository.save(pAttendance);
 	}
 	
-	public List<Attendance> findByMemberId(int pMemberId){
+	public Set<Attendance> findByMemberId(int pMemberId){
 		return attendanceRepository.findByMemberId(pMemberId);
 	}
 

@@ -3,6 +3,7 @@ package com.springboot.api.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -100,7 +101,7 @@ public class CoreController {
 	}
 
 	@RequestMapping(value = "/getAttendanceByMemberId", method = RequestMethod.POST)
-	public List<Attendance> getAttendanceByMemberId(@RequestParam(value = "memberId") int memberId) {
+	public Set<Attendance> getAttendanceByMemberId(@RequestParam(value = "memberId") int memberId) {
 		return attendanceService.findByMemberId(memberId);
 	}
 

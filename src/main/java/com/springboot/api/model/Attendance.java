@@ -1,6 +1,7 @@
 package com.springboot.api.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Attendance {
 	private int memberId;
 	
 	@Column(name = "date", length = 11)
-	private Date date;
+	private Timestamp date;
 
 	public int getAttendanceId() {
 		return attendanceId;
@@ -52,11 +53,11 @@ public class Attendance {
 		this.memberId = memberId;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 
