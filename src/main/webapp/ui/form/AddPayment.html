@@ -101,6 +101,8 @@
 					timeout: 4000
 				});
 			}
+			
+			CalculatePayment($("#memberId").val());
 			window.location.href="#ui/form/AddPayment.html";
 
 		});
@@ -127,7 +129,8 @@
 				$("#btnSave").attr("disabled","disabled");
 				$("#amount").attr("disabled","disabled");
 			} else {
-				
+				$("#btnSave").removeAttr("disabled");
+				$("#amount").removeAttr("disabled");
 			}
 
 		});
