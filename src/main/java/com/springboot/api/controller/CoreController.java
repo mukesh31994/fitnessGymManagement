@@ -218,7 +218,7 @@ public class CoreController {
 	public Map<String,String> calculatePayment(@RequestParam(value = "memberId") int memberId) {
 		Map<String,String> lMap = new HashMap<String, String>();
 		List<Payment> lPaymentList = paymentService.findByMemberId(memberId);
-		int sum = lPaymentList.stream().mapToInt(o -> Integer.parseInt(o.getAmount())).sum();
+		int sum = lPaymentList.stream().mapToInt(o -> (o.getAmount()==""?0:Integer.parseInt(o.getAmount()))).sum();
 		Member lMember = memberService.findByMemberId(memberId);
 		MembershipType lMembershipType = membershipTypeService.findByMembershipId(lMember.getMembershipId());
 		lMap.put("totalPayment", sum + "");
