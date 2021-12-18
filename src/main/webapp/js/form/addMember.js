@@ -106,7 +106,7 @@ debugger;
 			iconSmall: "fa fa-check fa-2x fadeInRight animated",
 			timeout: 4000
 		});
-		ui/form/AddPayment.html?id=119
+		
 	//	window.location.href="#ui/list/ListMember.html";
     });
     lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
