@@ -6,7 +6,7 @@ import com.springboot.api.model.Member;
 
 public interface MemberService {
 	
-	public void saveMember(Member pMember);
+	public Member saveMember(Member pMember);
 	
 	public List<Member> findAll();
 	

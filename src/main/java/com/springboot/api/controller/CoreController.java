@@ -76,11 +76,11 @@ public class CoreController {
 	}
 
 	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
-	public @ResponseBody String addMember(Member lMember) {
+	public @ResponseBody Member addMember(Member lMember) {
 		lMember.setJoiningDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-		memberService.saveMember(lMember);
+		return memberService.saveMember(lMember);
 
-		return "success";
+//		return "success";
 	}
 
 	@RequestMapping(value = "/getAllMember", method = RequestMethod.POST)

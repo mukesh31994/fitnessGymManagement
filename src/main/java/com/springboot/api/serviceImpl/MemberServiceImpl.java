@@ -17,8 +17,8 @@ public class MemberServiceImpl implements MemberService {
 	MemberRepository memberRepository;
 
 	@Override
-	public void saveMember(Member pMember) {
-		memberRepository.save(pMember);
+	public Member saveMember(Member pMember) {
+		return memberRepository.save(pMember);
 	}
 
 	@Override

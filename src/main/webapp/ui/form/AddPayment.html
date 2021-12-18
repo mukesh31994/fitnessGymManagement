@@ -24,7 +24,7 @@
 						</label>
 					</section>
 				</div>
-				<div class="row">
+				<div class="row" id="memberShipDetail" style="display:none;">
 					<section class="col col-6">
 						<h1>Membership Amount :  <span style="color: crimson;" id="memberShipAmountId"></span></h1>
 					</section>
@@ -64,6 +64,7 @@
 				var memberId = (window.location).href.substring(((window.location).href).lastIndexOf('=') + 1);
 				$("#memberId").val(memberId);
 				CalculatePayment(memberId);
+				
 		//	var member = dataSet.find(item => item.memberId === 77);
 			}
 			
@@ -113,7 +114,7 @@
 	}
 	
 	function CalculatePayment(memberId) {
-
+		$("#memberShipDetail").show();
 		var url = "/calculatePayment";
 		var lAjax1 = new FormAjax();
 		lAjax1.setUrl(url);
@@ -125,7 +126,7 @@
 			var totalPayment = parseInt(JSON.parse(response).totalPayment);
 			document.getElementById("memberShipAmountId").innerHTML = membershipAmount;
 			document.getElementById("paidAmountId").innerHTML = totalPayment;
-			if(totalPayment > membershipAmount){
+			if(totalPayment >= membershipAmount){
 				$("#btnSave").attr("disabled","disabled");
 				$("#amount").attr("disabled","disabled");
 			} else {
