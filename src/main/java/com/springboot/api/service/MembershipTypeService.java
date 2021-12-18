@@ -7,5 +7,7 @@ import com.springboot.api.model.MembershipType;
 public interface MembershipTypeService {
 	
 	public List<MembershipType> findAll();
+	
+	public MembershipType findByMembershipId(int pMembershipId);
 	 
 }
