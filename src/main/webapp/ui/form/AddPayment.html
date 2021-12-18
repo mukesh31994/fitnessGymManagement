@@ -52,6 +52,7 @@
 			if(url) {
 				var memberId = (window.location).href.substring(((window.location).href).lastIndexOf('=') + 1);
 				$("#memberId").val(memberId);
+				CalculatePayment(memberId);
 		//	var member = dataSet.find(item => item.memberId === 77);
 			}
 			

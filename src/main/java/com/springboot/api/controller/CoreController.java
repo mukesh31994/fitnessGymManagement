@@ -220,7 +220,7 @@ public class CoreController {
 		List<Payment> lPaymentList = paymentService.findByMemberId(memberId);
 		int sum = lPaymentList.stream().mapToInt(o -> Integer.parseInt(o.getAmount())).sum();
 		Member lMember = memberService.findByMemberId(memberId);
-		MembershipType lMembershipType = membershipTypeService.findByMembershipId(memberId);
+		MembershipType lMembershipType = membershipTypeService.findByMembershipId(lMember.getMembershipId());
 		lMap.put("totalPayment", sum + "");
 		lMap.put("membershipAmount", lMembershipType.getMembershipAmount() + "");
 		return lMap;
