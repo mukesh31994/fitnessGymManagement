@@ -43,7 +43,7 @@ var $createWorkoutPlanform = $("#createWorkoutPlanform").validate({
 /*      End of Code Validation       */
 
 function saveWorkoutPlan() {
-	debugger;
+	
 	if ($createWorkoutPlanform.valid()) {
 
 		var url1 = "/addWorkoutPlan";
@@ -52,7 +52,7 @@ function saveWorkoutPlan() {
 		lAjax1.setSync(true);
 		lAjax1.setData($('form').serialize())
 		lAjax1.addEventListener('success', function(response) {
-			debugger;
+			
 			console.log(response);
 			$.smallBox({
 				title: "Workout Plan",
@@ -62,7 +62,7 @@ function saveWorkoutPlan() {
 				timeout: 4000
 			});
 		});
-		lAjax1.addEventListener('error', function(textStatus, errorThrown) {debugger;
+		lAjax1.addEventListener('error', function(textStatus, errorThrown) {
 			console.log(textStatus + " ; " + errorThrown);
 		});
 		lAjax1.execute();
@@ -73,7 +73,7 @@ function saveWorkoutPlan() {
 }
 
 function OnLoad() {
-	debugger;
+	
 	var url = "/getAllMember";
 	var lAjax1 = new FormAjax();
 	lAjax1.setUrl(url);

@@ -135,13 +135,13 @@ function getCurrDate() {
 }
 //    getUserDetails();
 function getUserDetails()
-{debugger;
+{
     var url1 = "http://localhost:8080/getUserDetail";
     var lAjax1 = new FormAjax();
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);
     lAjax1.setData({"emailAddress":"devdh@gmail.com"})
-    lAjax1.addEventListener('success', function (response) {debugger;
+    lAjax1.addEventListener('success', function (response) {
         var json = JSON.parse(response);
         var data = JSON.parse(json.data);
         sessionStorage.setItem("USER", json.user);
@@ -160,7 +160,7 @@ function getUserDetails()
      /*   getStoreListByUserId();*/
 
     });
-    lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
+    lAjax1.addEventListener('error', function (textStatus, errorThrown) {
         console.log(textStatus + " ; " + errorThrown);
     });
     lAjax1.execute();
@@ -185,7 +185,7 @@ function getUserDetails()
     lAjax.setType('get');
     lAjax.setSync(true);
     lAjax.addEventListener('success', function (response) {
-debugger;
+
         var res = JSON.parse(response);
 
         var lStoreSpan = $("#storeName");

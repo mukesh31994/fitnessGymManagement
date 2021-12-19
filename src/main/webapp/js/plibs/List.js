@@ -81,7 +81,7 @@ function SearchParam() {
 }
 
 function List() {
-    debugger;
+    
     var debugState = false;
     this.criteria = null;
     this.searchCriteria = [];
@@ -415,7 +415,7 @@ function List() {
      * @method render
      */
     this.render = function () {
-       debugger;
+       
         this.rowsSelected = new Set();
         if (this.getIsPicklist() && !this.getIsServerSideData()) {
             this.displayRecords(null);
@@ -468,7 +468,7 @@ function List() {
      * @param {records}
      */
     this.displayRecords = function (records) {
-       debugger;
+       
         var tr = document.createElement('tr');
         var that = this;
         var defs = [];
@@ -486,7 +486,7 @@ function List() {
             this.setPageSize(parseInt(records.pageSize));
         }
 
-//        debugger;
+//        
         //build column definitions
         for (var i in lCols) {
             var th = document.createElement('th');
@@ -538,7 +538,7 @@ function List() {
             }
             defs.push(def);
         }
-debugger;
+
         this.setColumns(defs);
         var thead = document.createElement('thead');
         thead.appendChild(tr);
@@ -817,7 +817,7 @@ debugger;
      * @param {dataTable}
      */
     this.addColumnFilter = function (node, dataTable) { //function to add column filter to datatable.
-debugger;
+
         var searchRow = document.createElement('tr');
         var td = document.createElement('td');
         searchRow.appendChild(td);

@@ -241,7 +241,7 @@ function Form() {
     //this.fieldHashTable = new Hashtable();
 
     this.buildForm = function (pId) {
-        debugger;
+        
         this.fieldSeqArray = new Array();
         this.fieldMap = {};
         var input = $("#" + pId + " input");
@@ -251,7 +251,7 @@ function Form() {
     };
 
     this.buildField = function (pField, pDom) {
-        debugger;
+        
         if (pField) {
             var pFieldId = pDom.attr('id');
             var pFieldName = pDom.attr('name');
@@ -447,7 +447,7 @@ function Form() {
 
     this.update = function (formData, callback)
     {
-//        debugger;
+//        
         var url = localStorage.getItem("url") + "FormServlet";
         var entityName = document.getElementById("entityName").value;
         var beanName = document.getElementById("beanName").value;

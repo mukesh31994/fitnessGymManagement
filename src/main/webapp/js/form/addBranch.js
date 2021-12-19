@@ -47,7 +47,7 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
 /*      End of Code Validation       */
 
 function saveBranch() {
-debugger;
+
     if ($customerUpdateForm.valid()) {
 	
     var url1 = "/addBranch";
@@ -55,7 +55,7 @@ debugger;
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);
     lAjax1.setData( $('form').serialize() )
-    lAjax1.addEventListener('success', function (response) {debugger;
+    lAjax1.addEventListener('success', function (response) {
         console.log(response);
 		$.smallBox({
 			title: "Branch",

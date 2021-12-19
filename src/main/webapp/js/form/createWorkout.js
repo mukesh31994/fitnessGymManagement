@@ -43,7 +43,7 @@ var $createWorkoutform = $("#createWorkoutform").validate({
 /*      End of Code Validation       */
 
 function saveWorkout() {
-debugger;
+
     if ($createWorkoutform.valid()) {
 	$("#userId").val(JSON.parse(sessionStorage.user).userId);
     var url1 = "/addWorkout";
@@ -51,7 +51,7 @@ debugger;
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);
     lAjax1.setData( $('form').serialize() )
-    lAjax1.addEventListener('success', function (response) {debugger;
+    lAjax1.addEventListener('success', function (response) {
         console.log(response);
 		$.smallBox({
 			title: "Workout",
@@ -62,7 +62,7 @@ debugger;
 		});
 		window.location.href="#ui/list/ListWorkout.html";
     });
-    lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
+    lAjax1.addEventListener('error', function (textStatus, errorThrown) {
         console.log(textStatus + " ; " + errorThrown);
     });
     lAjax1.execute();

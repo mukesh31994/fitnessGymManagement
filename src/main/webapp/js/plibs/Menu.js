@@ -57,11 +57,11 @@ function Menu() {
 
 
     this.render = function () {
-        debugger;
+        
         var map = {};
         var mainMenu = this.dom;
         var data = this.data;
-//        debugger;
+//        
         for (var i = 0; i < data.length; i++) {
             var parent = data[i][1];
             if (data[i][0] === parent) { //if its the same element and its own parent.

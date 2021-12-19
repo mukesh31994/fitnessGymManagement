@@ -48,7 +48,7 @@ function Team() {
                 opt.text(lStr);
                 that.getDataList().append(opt);
             }
-//            debugger;
+//            
         });
 
         lAjax.addEventListener('error', function (textStatus, errorThrown) {

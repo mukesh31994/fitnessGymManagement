@@ -16,7 +16,7 @@ var memberList = {
 			type: 'string',
 			width: '20',
 			/*render: function(pValue, meta, record) {
-				debugger;
+				
 				var reqStr = '<a    href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
 			}*/
@@ -66,7 +66,7 @@ var memberList = {
 			type: 'string',
 			width: '20',
 			render: function(pValue, meta, record) {
-				debugger;
+				
 				var reqStr = '<a class="btn btn-info btn-sm" href="#ui/form/UpdateMember.html?id=' + record.memberId + '" id="' + pValue + '" type="ajax">Edit <i class="fa fa-edit"></i> </a>';
 				return reqStr;
 			}
@@ -132,7 +132,7 @@ var instructorList = {
 			type: 'string',
 			width: '20',
 			render: function(pValue, meta, record) {
-				debugger;
+				
 				var reqStr = '<a  href="#ui/form/UpdateInstructor.html?id=' + record.instructorId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
 			}
@@ -171,7 +171,7 @@ var workoutList = {
 			type: 'string',
 			width: '20',
 			render: function(pValue, meta, record) {
-				debugger;
+				
 				var reqStr = '<a  href="#ui/form/UpdateWorkout.html?id=' + record.workoutId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
 			}
@@ -199,7 +199,7 @@ var workoutPlanList = {
 			type: 'number',
 			width: '20',
 			render: function(pValue, meta, record) {
-				debugger;
+				
 				var reqStr = '<a  href="#ui/form/UpdateWorkoutPlan.html?id=' + record.planId + '" id="' + pValue + '" type="ajax">' + pValue + '</a>';
 				return reqStr;
 			}
@@ -210,7 +210,7 @@ var workoutPlanList = {
 			type: 'string',
 			width: '20',
 			render: function(pValue, meta, record) {
-				debugger;
+				
 				return workoutJson[pValue];
 			}
 		},

@@ -89,7 +89,7 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
 /*      End of Code Validation       */
 
 function saveMember() {
-debugger;
+
     if ($customerUpdateForm.valid()) {
 	
     var url1 = "/addMember";
@@ -97,7 +97,7 @@ debugger;
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);
     lAjax1.setData( $('form').serialize() )
-    lAjax1.addEventListener('success', function (response) {debugger;
+    lAjax1.addEventListener('success', function (response) {
         console.log(response);
 		$.smallBox({
 			title: "Member",
@@ -110,7 +110,7 @@ debugger;
 		window.location.href="#ui/form/AddPayment.html?id=" +JSON.parse(response).memberId
 	//	window.location.href="#ui/list/ListMember.html";
     });
-    lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
+    lAjax1.addEventListener('error', function (textStatus, errorThrown) {
         console.log(textStatus + " ; " + errorThrown);
     });
     lAjax1.execute();

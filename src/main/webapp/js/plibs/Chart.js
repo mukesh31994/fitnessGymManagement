@@ -109,7 +109,7 @@ function Chart() {
     };
 
     this.fetchMetaData = function () {
-//      debugger;
+//      
         var me = this;
         var lURL = this.getURL() + "getChart/" + this.getChartCode();
         var lMetaAjax = new FormAjax();
@@ -132,7 +132,7 @@ function Chart() {
     };
 
     this.fetchData = function () {
-//       debugger;
+//       
         var that = this;
         var lAjax = new FormAjax();
         lAjax.setUrl(this.getURL() + "getChartData");
@@ -173,7 +173,7 @@ function Chart() {
     
     
     this.buildData = function (pData) {
-//        debugger;
+//        
         var lData = pData.data;
         var lMetaData = this.getMetaData();
         var lChartAxisArray = lMetaData.chartAxis;
@@ -195,7 +195,7 @@ function Chart() {
     };
     
     this.buildChart = function(pData){
-//        debugger;
+//        
         var lData = pData.dataset;
         var lMetaData = this.getMetaData();
         var lChartAxisArray = lMetaData.chartAxis;
@@ -215,7 +215,7 @@ function Chart() {
                 }
             }
         }
-//        debugger;
+//        
         return lData;
     };
     

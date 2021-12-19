@@ -1,6 +1,6 @@
 
 function OnLoad() {
-	debugger;
+	
 	var url1 = "/getByWorkoutId";
 	var lAjax1 = new FormAjax();
 	lAjax1.setUrl(url1);
@@ -8,7 +8,7 @@ function OnLoad() {
 	lAjax1.setData({"workoutId":(window.location).href.substring(((window.location).href).lastIndexOf('=') + 1)})
 /*	lAjax1.setData($('form').serialize())*/
 	lAjax1.addEventListener('success', function(response) {
-		debugger;
+		
 		console.log(response);
 		var response = JSON.parse(response);
 		for ( prop in response ) {
@@ -16,20 +16,20 @@ function OnLoad() {
 		}
 	});
 	lAjax1.addEventListener('error', function(textStatus, errorThrown) {
-		debugger;
+		
 		console.log(textStatus + " ; " + errorThrown);
 	});
 	lAjax1.execute();
 }
 
 function updateWorkout(){
-	debugger;
+	
 	var url1 = "/addWorkout";
     var lAjax1 = new FormAjax();
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);
     lAjax1.setData( $('form').serialize() )
-    lAjax1.addEventListener('success', function (response) {debugger;
+    lAjax1.addEventListener('success', function (response) {
         console.log(response);
 		$.smallBox({
 			title: "Workout",
@@ -40,7 +40,7 @@ function updateWorkout(){
 		});
 		window.location.href="#ui/list/ListWorkout.html";
     });
-    lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
+    lAjax1.addEventListener('error', function (textStatus, errorThrown) {
         console.log(textStatus + " ; " + errorThrown);
     });
     lAjax1.execute();
