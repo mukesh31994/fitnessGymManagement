@@ -241,5 +241,10 @@ public class CoreController {
 	public Branchmaster getByBranchId(@RequestParam(value = "branchId") int branchId) {
 		return branchService.findByBranchId(branchId);
 	}
+	
+	@RequestMapping(value = "/getAllBranch", method = RequestMethod.POST)
+	public List<Branchmaster> getAllBranch() {
+		return branchService.findAll();
+	}
 
 }
