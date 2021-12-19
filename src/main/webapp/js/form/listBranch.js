@@ -18,7 +18,7 @@ function OnLoad() {
 				"order": [[ 3, "desc" ]]
 			},
 			data: dataSet,
-			columns: viewConfig.memberList.columns
+			columns: viewConfig.branchList.columns
 		});
 
 	});
