@@ -235,7 +235,11 @@ public class CoreController {
 	public @ResponseBody Branchmaster addBranch(Branchmaster lBranchmaster) {
 		return branchService.saveBranch(lBranchmaster);
 
-//		return "success";
+	}
+	
+	@RequestMapping(value = "/getByMemberId", method = RequestMethod.POST)
+	public Branchmaster getByBranchId(@RequestParam(value = "branchId") int branchId) {
+		return branchService.findByBranchId(branchId);
 	}
 
 }
