@@ -1,41 +1,50 @@
 <div class=" padding-top-10 bg-color-white">
-	<div class="jarviswidget jarviswidget-color-darken" style="" id="wid-id-0">
+	<div class="jarviswidget jarviswidget-color-darken" style=""
+		id="wid-id-0">
 		<header>
-			<span> <i></i> </span>
+			<span> <i></i>
+			</span>
 			<h2>Add Payment</h2>
 		</header>
-		<form id="updateCustomerform" class="smart-form" autocomplete="off">
-			<input type="hidden" class="form-control" name="userId" id="userId" >
+		<form id="addCustomerPayment" class="smart-form" autocomplete="off">
+			<input type="hidden" class="form-control" name="userId" id="userId">
 			<fieldset>
 				<div class="row">
 					<section class="col col-6">
-						<label class="label">Select Member</label>
+						<label class="label">Select Member</label> 
 						<label class="select">
 							<select name="memberId" id="memberId">
-							</select>
-							<i></i>
+								<option selected="true" disabled="disabled"></option>
+							</select> <i></i>
 						</label>
+
 					</section>
 					<section class="col col-6">
-						<label class="label">Payment Amount</label>
-						<label class="input">
-							<i class="icon-append fa fa-money"></i>
-							<input type="text" name="amount" id="amount" maxlength="30">
+						<label class="label">Payment Amount</label> <label class="input">
+							<i class="icon-append fa fa-money"></i> <input type="text"
+							name="amount" id="amount" maxlength="30">
 						</label>
 					</section>
 				</div>
-				<div class="row" id="memberShipDetail" style="display:none;">
+				<div class="row" id="memberShipDetail" style="display: none;">
 					<section class="col col-6">
-						<h1>Membership Amount :  <span style="color: crimson;" id="memberShipAmountId"></span></h1>
+						<h1>
+							Membership Amount : <span style="color: crimson;"
+								id="memberShipAmountId"></span>
+						</h1>
 					</section>
 					<section class="col col-6">
-						<h1>Amount Paid Till Date :  <span style="color: crimson;" id="paidAmountId"></span></h1>
+						<h1>
+							Amount Paid Till Date : <span style="color: crimson;"
+								id="paidAmountId"></span>
+						</h1>
 					</section>
 				</div>
 			</fieldset>
 			<footer>
 				<div class="col col-md-6">
-					<input type="button" class="btn btn-primary" id="btnSave" value="Add Payment" onclick="AddPayment();">
+					<input type="submit" class="btn btn-primary" id="btnSave"
+						value="Add Payment">
 				</div>
 			</footer>
 
@@ -44,7 +53,10 @@
 </div>
 
 <script>
-	$("#memberId").on("change",function(){
+	var membershipAmount;
+	var totalPayment;
+	
+	$("#memberId").on("change", function() {
 		CalculatePayment($("#memberId").val());
 	})
 	function OnLoad() {
@@ -54,88 +66,152 @@
 		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
 		lAjax1.setData()
-		lAjax1.addEventListener('success', function (response) {debugger;
-			var dataSet = JSON.parse(response);
-			$.each(dataSet, function (i, item) {
-				$('<option>').val(item.memberId).text(item.firstName + " - " + item.email).appendTo('#memberId');
+		lAjax1.addEventListener('success',
+				function(response) {
+					debugger;
+					var dataSet = JSON.parse(response);
+					$.each(dataSet, function(i, item) {
+						$('<option>').val(item.memberId).text(
+								item.firstName + " - " + item.email).appendTo(
+								'#memberId');
+					});
+					var url = (window.location).href.includes("=");
+					if (url) {
+						var memberId = (window.location).href
+								.substring(((window.location).href)
+										.lastIndexOf('=') + 1);
+						$("#memberId").val(memberId);
+						CalculatePayment(memberId);
+
+						//	var member = dataSet.find(item => item.memberId === 77);
+					}
+
+				});
+		lAjax1.addEventListener('error', function(textStatus, errorThrown) {
+			console.log(textStatus + " ; " + errorThrown);
+		});
+		lAjax1.execute();
+	}
+
+	var errorClass = 'invalid';
+	var errorElement = 'em';
+	var $addCustomerPayment = $("#addCustomerPayment").validate(
+			{
+				errorClass : errorClass,
+				errorElement : errorElement,
+				highlight : function(element) {
+					$(element).parent().removeClass('state-success').addClass(
+							"state-error");
+					$(element).removeClass('valid');
+				},
+				unhighlight : function(element) {
+					$(element).parent().removeClass("state-error").addClass(
+							'state-success');
+					$(element).addClass('valid');
+				},
+				// Rules for form validation
+				rules : {
+					amount : {
+						required : true
+					},
+					memberId : {
+						required : true
+					}
+				},
+				messages : {
+					amount : {
+						required : 'Please enter amount',
+						digits : 'Digits only'
+					},
+					memberId : {
+						required : 'Please select Member for payment'
+					}
+					
+				},
+				//Ajax form submition
+				submitHandler : function(form) {
+					AddPayment();
+				},
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.parent());
+				}
 			});
-			var url = (window.location).href.includes("=");
-			if(url) {
-				var memberId = (window.location).href.substring(((window.location).href).lastIndexOf('=') + 1);
-				$("#memberId").val(memberId);
-				CalculatePayment(memberId);
-				
-		//	var member = dataSet.find(item => item.memberId === 77);
-			}
-			
-			
 
-		});
-		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
-			console.log(textStatus + " ; " + errorThrown);
-		});
-		lAjax1.execute();
-	}
-	
 	function AddPayment() {
+		debugger;
+		if ($addCustomerPayment.valid()) {
+			var url = "/addPayment";
+			var lAjax1 = new FormAjax();
+			lAjax1.setUrl(url);
+			lAjax1.setSync(true);
+			lAjax1.setData($('form').serialize())
+			lAjax1
+					.addEventListener(
+							'success',
+							function(response) {
+								if (response == "success") {
+									$
+											.smallBox({
+												title : "Payment",
+												content : "<i class='fa fa-clock-o'></i> <i>Payment Updated Successfully...</i>",
+												color : "#659265",
+												iconSmall : "fa fa-check fa-2x fadeInRight animated",
+												timeout : 4000
+											});
+								} else {
+									$
+											.smallBox({
+												title : "Payment",
+												content : "<i class='fa fa-clock-o'></i> <i>Something went wrong...</i>",
+												color : "#659265",
+												iconSmall : "fa fa-check fa-2x fadeInRight animated",
+												timeout : 4000
+											});
+								}
+								$("#amount").val("");
+								CalculatePayment($("#memberId").val());
+								// window.location.href="#ui/form/AddPayment.html";
 
-		var url = "/addPayment";
-		var lAjax1 = new FormAjax();
-		lAjax1.setUrl(url);
-		lAjax1.setSync(true);
-		lAjax1.setData($('form').serialize())
-		lAjax1.addEventListener('success', function (response) {
-			if (response == "success") {
-				$.smallBox({
-					title: "Payment",
-					content: "<i class='fa fa-clock-o'></i> <i>Payment Updated Successfully...</i>",
-					color: "#659265",
-					iconSmall: "fa fa-check fa-2x fadeInRight animated",
-					timeout: 4000
-				});
-			} else {
-				$.smallBox({
-					title: "Payment",
-					content: "<i class='fa fa-clock-o'></i> <i>Something went wrong...</i>",
-					color: "#659265",
-					iconSmall: "fa fa-check fa-2x fadeInRight animated",
-					timeout: 4000
-				});
-			}
-			$("#amount").val("");
-			CalculatePayment($("#memberId").val());
-			// window.location.href="#ui/form/AddPayment.html";
-
-		});
-		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
-			console.log(textStatus + " ; " + errorThrown);
-		});
-		lAjax1.execute();
+							});
+			lAjax1.addEventListener('error', function(textStatus, errorThrown) {
+				console.log(textStatus + " ; " + errorThrown);
+			});
+			lAjax1.execute();
+		} else {
+			console.log('Form validation error');
+		}
 	}
-	
+
 	function CalculatePayment(memberId) {
 		$("#memberShipDetail").show();
 		var url = "/calculatePayment";
 		var lAjax1 = new FormAjax();
 		lAjax1.setUrl(url);
 		lAjax1.setSync(true);
-		lAjax1.setData({"memberId" : memberId})
-		lAjax1.addEventListener('success', function (response) {
-			debugger;
-			var membershipAmount = parseInt(JSON.parse(response).membershipAmount);
-			var totalPayment = parseInt(JSON.parse(response).totalPayment);
-			document.getElementById("memberShipAmountId").innerHTML = membershipAmount;
-			document.getElementById("paidAmountId").innerHTML = totalPayment;
-			if(totalPayment >= membershipAmount){
-				$("#btnSave").attr("disabled","disabled");
-				$("#amount").attr("disabled","disabled");
-			} else {
-				$("#btnSave").removeAttr("disabled");
-				$("#amount").removeAttr("disabled");
-			}
+		lAjax1.setData({
+			"memberId" : memberId
+		})
+		lAjax1
+				.addEventListener(
+						'success',
+						function(response) {
+							debugger;
+							membershipAmount = parseInt(JSON
+									.parse(response).membershipAmount);
+							totalPayment = parseInt(JSON.parse(response).totalPayment);
+							document.getElementById("memberShipAmountId").innerHTML = membershipAmount;
+							document.getElementById("paidAmountId").innerHTML = totalPayment;
+							if (totalPayment >= membershipAmount) {
+								$("#btnSave").attr("disabled", "disabled");
+								$("#amount").attr("disabled", "disabled");
+							} else {
+								$("#btnSave").removeAttr("disabled");
+								$("#amount").removeAttr("disabled");
+							}
 
-		});
-		lAjax1.addEventListener('error', function (textStatus, errorThrown) {
+						});
+		lAjax1.addEventListener('error', function(textStatus, errorThrown) {
 			console.log(textStatus + " ; " + errorThrown);
 		});
 		lAjax1.execute();
