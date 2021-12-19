@@ -230,7 +230,7 @@
 							</li>
 						</ul>	
 					</li>
-					<li class="">
+					<li class="" id="adminTab">
 						<a href="#" title="Admin"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Admin</span></a>
 						<ul>
 							<li class="active">
@@ -328,6 +328,14 @@
 				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
 			}
 			document.getElementById("userName").innerText = JSON.parse(sessionStorage.getItem("user")).username;
+			
+			var userRole = JSON.parse(sessionStorage.getItem("user")).roles;
+			if(userRole != "ADMIN") {
+				$('#adminTab').hide();
+			} else {
+				$('#adminTab').show();
+			}
+			
 		</script>
 
 		<!-- IMPORTANT: APP CONFIG -->
