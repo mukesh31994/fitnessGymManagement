@@ -101,7 +101,7 @@ function saveMember() {
 
 		var url1 = "/addMember";
 		var lAjax1 = new FormAjax();
-		lAjax1.setUrl(url1);
+		lAjax1.setUrl(url1); 
 		lAjax1.setSync(true);
 		lAjax1.setData($('form').serialize())
 		lAjax1.addEventListener('success', function(response) {
