@@ -311,5 +311,6 @@ var viewConfig = {
 	"instructorList":instructorList,
 	"workoutList":workoutList,
 	"workoutPlanList":workoutPlanList,
-	"adminList":adminList
+	"adminList":adminList,
+	"branchList":branchList
 };
