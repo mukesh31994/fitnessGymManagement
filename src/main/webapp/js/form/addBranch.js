@@ -16,27 +16,27 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
     },
 // Rules for form validation
     rules: {
-        username: {
+        branchName: {
             required: true
         },
-        password: {
+        contact: {
             required: true
         }
 
     },
     messages: {
-        username: {
+        branchName: {
             required: 'Please enter first name',
             alphabets: 'Alphabets only'
         },
-        password: {
+        contact: {
             required: 'Please enter last name',
             alphabets: 'Alphabets only'
         }
     },
 //Ajax form submition
     submitHandler: function (form) {
-        saveUser();
+        saveBranch();
     },
 // Do not change code below
     errorPlacement: function (error, element) {
@@ -46,11 +46,11 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
 
 /*      End of Code Validation       */
 
-function saveUser() {
+function saveBranch() {
 debugger;
     if ($customerUpdateForm.valid()) {
 	
-    var url1 = "/addUser";
+    var url1 = "/addBranch";
     var lAjax1 = new FormAjax();
     lAjax1.setUrl(url1);
     lAjax1.setSync(true);
@@ -58,15 +58,15 @@ debugger;
     lAjax1.addEventListener('success', function (response) {debugger;
         console.log(response);
 		$.smallBox({
-			title: "Admin",
-			content: "<i class='fa fa-clock-o'></i> <i>Admin Save Successfully...</i>",
+			title: "Branch",
+			content: "<i class='fa fa-clock-o'></i> <i>Branch Save Successfully...</i>",
 			color: "#659265",
 			iconSmall: "fa fa-check fa-2x fadeInRight animated",
 			timeout: 4000
 		});
-		window.location.href="#ui/list/ListAdmin.html";
+		window.location.href="#ui/list/ListBranch.html";
     });
-    lAjax1.addEventListener('error', function (textStatus, errorThrown) {debugger;
+    lAjax1.addEventListener('error', function (textStatus, errorThrown) {
         console.log(textStatus + " ; " + errorThrown);
     });
     lAjax1.execute();
