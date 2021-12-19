@@ -280,6 +280,30 @@ var paymentList = {
 	]
 };
 
+
+var branchList = {
+	columns: [
+		{
+			mDataProp: 'branchName',
+			title: 'Branch Name',
+			type: 'string',
+			width: '20'
+		},
+		{
+			mDataProp: 'contact',
+			title: 'Contact',
+			type: 'string',
+			width: '20'
+		},
+		{
+			mDataProp: 'description',
+			title: 'Description',
+			type: 'string',
+			width: '20'
+		}
+	]
+};
+
 var viewConfig = {
 	"memberList": memberList,
 	"attendance": attendanceList,
