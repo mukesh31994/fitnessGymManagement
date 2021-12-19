@@ -296,8 +296,8 @@ var branchList = {
 			width: '20'
 		},
 		{
-			mDataProp: 'description',
-			title: 'Description',
+			mDataProp: 'address',
+			title: 'address',
 			type: 'string',
 			width: '20'
 		}
