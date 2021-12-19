@@ -6,7 +6,7 @@ import com.springboot.api.model.Branchmaster;
 
 public interface BranchService {
 	
-	public void saveBranch(Branchmaster pBranchmaster);
+	public Branchmaster saveBranch(Branchmaster pBranchmaster);
 	
 	public List<Branchmaster> findAll();
 	

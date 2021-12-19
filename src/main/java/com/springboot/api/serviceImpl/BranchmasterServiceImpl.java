@@ -19,8 +19,8 @@ public class BranchmasterServiceImpl implements BranchService {
 	BranchRepository branchRepository;
 
 	@Override
-	public void saveBranch(Branchmaster pBranchmaster) {
-		branchRepository.save(pBranchmaster);
+	public Branchmaster saveBranch(Branchmaster pBranchmaster) {
+		return branchRepository.save(pBranchmaster);
 	}
 
 	@Override

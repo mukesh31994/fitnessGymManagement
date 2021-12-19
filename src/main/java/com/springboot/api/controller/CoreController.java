@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.api.model.Admin;
 import com.springboot.api.model.Attendance;
+import com.springboot.api.model.Branchmaster;
 import com.springboot.api.model.Instructor;
 import com.springboot.api.model.Member;
 import com.springboot.api.model.MembershipType;
@@ -28,6 +29,7 @@ import com.springboot.api.model.Workout;
 import com.springboot.api.model.WorkoutPlan;
 import com.springboot.api.service.AdminService;
 import com.springboot.api.service.AttendanceService;
+import com.springboot.api.service.BranchService;
 import com.springboot.api.service.InstructorService;
 import com.springboot.api.service.MemberService;
 import com.springboot.api.service.MembershipTypeService;
@@ -69,6 +71,9 @@ public class CoreController {
 	
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	BranchService branchService;
 
 	@GetMapping("welcome")
 	public String getMessage() {
@@ -224,6 +229,13 @@ public class CoreController {
 		lMap.put("totalPayment", sum + "");
 		lMap.put("membershipAmount", lMembershipType.getMembershipAmount() + "");
 		return lMap;
+	}
+	
+	@RequestMapping(value = "/addBranch", method = RequestMethod.POST)
+	public @ResponseBody Branchmaster addBranch(Branchmaster lBranchmaster) {
+		return branchService.saveBranch(lBranchmaster);
+
+//		return "success";
 	}
 
 }
