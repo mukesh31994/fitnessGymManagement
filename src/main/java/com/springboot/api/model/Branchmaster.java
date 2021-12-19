@@ -24,32 +24,24 @@ public class Branchmaster {
 
 	@Column(name = "contact", length = 11)
 	private String contact;
-	
+
 	@Column(name = "userId", length = 11)
 	private int userId;
 
-	public int getAdminId() {
-		return adminId;
+	public int getBranchId() {
+		return branchId;
 	}
 
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
+	public void setBranchId(int branchId) {
+		this.branchId = branchId;
 	}
 
-	public String getAdminName() {
-		return adminName;
+	public String getBranchName() {
+		return branchName;
 	}
 
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
-	}
-
-	public String getContact() {
-		return contact;
-	}
-
-	public void setContact(String contact) {
-		this.contact = contact;
+	public void setBranchName(String branchName) {
+		this.branchName = branchName;
 	}
 
 	public String getAddress() {
@@ -60,12 +52,12 @@ public class Branchmaster {
 		this.address = address;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getContact() {
+		return contact;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	public int getUserId() {
@@ -78,7 +70,8 @@ public class Branchmaster {
 
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", contact=" + contact + ", address="
-				+ address + ", email=" + email + ", userId=" + userId + "]";
+		return "Branchmaster [branchId=" + branchId + ", branchName=" + branchName + ", address=" + address
+				+ ", contact=" + contact + ", userId=" + userId + "]";
 	}
+
 }
