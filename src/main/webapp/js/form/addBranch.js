@@ -76,4 +76,6 @@ debugger;
     }
 }
 
-
+function OnLoad() {
+		$("#userId").val(JSON.parse(sessionStorage.user).userId);
+		}
