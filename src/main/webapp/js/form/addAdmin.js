@@ -21,17 +21,37 @@ var $customerUpdateForm = $("#updateCustomerform").validate({
         },
         password: {
             required: true
+        },
+        address: {
+            required: true
+        },
+        contact: {
+            required: true
+        },
+        email: {
+            required: true
         }
 
     },
     messages: {
-        username: {
-            required: 'Please enter first name',
+	username: {
+            required: 'Please enter full name',
             alphabets: 'Alphabets only'
         },
-        password: {
-            required: 'Please enter last name',
+         password: {
+            required: 'Please enter password',
             alphabets: 'Alphabets only'
+        },
+        contact: {
+            required: 'Please enter mobile number',
+            digits: 'Digits only',
+            mobileNo: 'Enter valid mobile number'
+        },
+        address: {
+            required: 'Please enter the address'
+        },
+        email: {
+            required: 'Please select email-Id'
         }
     },
 //Ajax form submition
