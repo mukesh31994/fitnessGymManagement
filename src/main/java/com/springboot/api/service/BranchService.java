@@ -10,5 +10,5 @@ public interface BranchService {
 	
 	public List<Branchmaster> findAll();
 	
-	 
+	public Branchmaster findByBranchId(int pBranchId);
 }
