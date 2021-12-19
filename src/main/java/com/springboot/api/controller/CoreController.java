@@ -237,7 +237,7 @@ public class CoreController {
 
 	}
 	
-	@RequestMapping(value = "/getByMemberId", method = RequestMethod.POST)
+	@RequestMapping(value = "/getByBranchId", method = RequestMethod.POST)
 	public Branchmaster getByBranchId(@RequestParam(value = "branchId") int branchId) {
 		return branchService.findByBranchId(branchId);
 	}
