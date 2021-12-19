@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.api.model.Admin;
 import com.springboot.api.model.Branchmaster;
+import com.springboot.api.model.Member;
 import com.springboot.api.repository.AdminRepository;
 import com.springboot.api.repository.BranchRepository;
 import com.springboot.api.service.AdminService;
@@ -28,7 +29,10 @@ public class BranchmasterServiceImpl implements BranchService {
 		return branchRepository.findAll();
 	}
 
-
+	@Override
+	public Branchmaster findByBranchId(int pBranchId) {
+		return branchRepository.findByBranchId(pBranchId);
+	}
 
 //	@Override
 //	public Admin findByAdminId(int pAdminId) {
