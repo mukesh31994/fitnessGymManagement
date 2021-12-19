@@ -304,6 +304,11 @@ var branchList = {
 	]
 };
 
+var permotional = {
+	"SAVE" : "<div id=\"bodyDiv\"style=\"background-color: aqua; height: 600px; width: 400px; text-align: center;margin: 0 auto;\"><div id=\"headerDiv\" style=\"background-color: beige; padding: 20px;\"><div id=\"imageDiv\"><img src=\"cid:image\" alt=\"logo\" width=\"150\" height=\"150\"></div><H3>Fitness Gym Management</H3></div><div id=\"bodyPanelDiv\"><P id=\"saveText\" style=\"margin: 0px; font-size: 150px; font-weight: bold; color: cornflowerblue;\">SAVE</P><BR><P id=\"upToText\"style=\"margin: 0px; font-size: 50px; font-style: italic; font-weight: bold; color: aqua; background: azure; padding: 10px;\">Up to 70%</P></div><div id=\"footerDiv\" style=\"font-size: 25px; color: cornflowerblue; font-weight: bold; background-color: aqua; padding-bottom: 20px;\"><P id=\"footerText\"><B>Any further details please contact Fitness gym management office</B></P></div></div>",
+	"OFFER" : "<div style=\"background-color: red; height: 600px; width: 400px; text-align: center;margin: 0 auto;\"><div id=\"headerDiv\" style=\"background-color: gold; padding: 20px;\"><div id=\"imageDiv\"><img src=\"cid:image\" alt=\"logo\" width=\"150\" height=\"150\"></div><H3>Fitness Gym Management</H3></div><div id=\"bodyPanelDiv\"><P style=\"margin: 0px; font-size: 80px; font-weight: bold; color: white;\">Christmas<BR>Offers</P><BR><P style=\"margin: 0px; font-size: 50px; font-style: italic; font-weight: bold; color: red; background: gold; padding: 10px;\">BUY 1 GET 1<BR>FREE</P></div><div id=\"footerDiv\"style=\"font-size: 25px; color: gold; font-weight: bold; background-color: red; padding-bottom: 20px;\"><P id=\"footerText\"><B>Any further details please contact Fitness gym managementoffice</B>.</P></div></div>"
+};
+
 var viewConfig = {
 	"memberList": memberList,
 	"attendance": attendanceList,
@@ -312,5 +317,6 @@ var viewConfig = {
 	"workoutList":workoutList,
 	"workoutPlanList":workoutPlanList,
 	"adminList":adminList,
-	"branchList":branchList
+	"branchList":branchList,
+	"permotional":permotional
 };
