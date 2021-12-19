@@ -219,13 +219,14 @@ var workoutPlanList = {
 			title: 'Date',
 			type: 'date',
 			width: '20'
-		},
+		}
+		/*,
 		{
 			mDataProp: 'instructorId',
 			title: 'instructor Id',
 			type: 'number',
 			width: '20'
-		}
+		}*/
 	]
 };
 
