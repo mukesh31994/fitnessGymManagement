@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.springboot.api.model.Admin;
 import com.springboot.api.model.Branchmaster;
 import com.springboot.api.repository.AdminRepository;
+import com.springboot.api.repository.BranchRepository;
 import com.springboot.api.service.AdminService;
 import com.springboot.api.service.BranchService;
 
@@ -19,14 +20,12 @@ public class BranchmasterServiceImpl implements BranchService {
 
 	@Override
 	public void saveBranch(Branchmaster pBranchmaster) {
-		// TODO Auto-generated method stub
-		
+		branchRepository.save(pBranchmaster);
 	}
 
 	@Override
 	public List<Branchmaster> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return branchRepository.findAll();
 	}
 
 
