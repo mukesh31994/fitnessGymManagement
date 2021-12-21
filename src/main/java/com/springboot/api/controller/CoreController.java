@@ -75,7 +75,7 @@ public class CoreController {
 	@Autowired
 	BranchService branchService;
 
-	@GetMapping("/")
+	@GetMapping("/test")
 	public String getMessage() {
 		return "Welcome to Google cloud deployment server - Mukesh";
 	}
@@ -206,7 +206,9 @@ public class CoreController {
 	@RequestMapping(value = "/myuser", method = RequestMethod.POST)
 	@ResponseBody
 	public User getUsername(HttpServletRequest req) {
-		User lUser = userService.findByUsername(req.getUserPrincipal().getName());
+		
+		User lUser = userService.findByUsername("mukesh");
+//		User lUser = userService.findByUsername(req.getUserPrincipal().getName());
 	    return lUser;
 	}
 	
