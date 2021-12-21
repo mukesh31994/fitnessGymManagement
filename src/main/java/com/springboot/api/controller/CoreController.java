@@ -75,10 +75,10 @@ public class CoreController {
 	@Autowired
 	BranchService branchService;
 
-	@GetMapping("welcome")
-	public String getMessage() {
-		return "Welcome to Azure Web App for Containers ";
-	}
+	/*
+	 * @GetMapping("/") public String getMessage() { return
+	 * "Welcome to Google cloud deployment server - Mukesh"; }
+	 */
 
 	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
 	public @ResponseBody Member addMember(Member lMember) {
